@@ -5,9 +5,363 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Membres | Canada-Maurice Business Council</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Filtres */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid var(--separator);
+            color: var(--text-gray);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--red-canada);
+            border-color: var(--red-canada);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Membres fondateurs - premium */
+        .founder-members {
+            margin-bottom: 80px;
+        }
+        
+        .founder-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .founder-card {
+            background: white;
+            padding: 50px 40px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .founder-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--red-canada), var(--red-dark));
+        }
+        
+        .founder-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .founder-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
+            color: var(--red-canada);
+            transition: var(--transition);
+        }
+        
+        .founder-card:hover .founder-icon {
+            background: var(--red-canada);
+            color: white;
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .founder-badge {
+            display: inline-block;
+            background: var(--red-canada);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        /* Membres corporatifs */
+        .corp-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        
+        .corp-card {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            border: 2px solid var(--bg-light);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .corp-card:hover {
+            border-color: var(--red-canada);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .corp-icon {
+            font-size: 2.5rem;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        
+        .corp-card:hover .corp-icon {
+            color: var(--red-canada);
+            transform: scale(1.2);
+        }
+        
+        .corp-sector {
+            font-size: 0.8rem;
+            color: var(--red-canada);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        
+        /* Témoignages */
+        .testimonials {
+            background: var(--bg-light);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--red-canada);
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--red-canada);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .author-info h4 {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+        
+        .author-info p {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        
+        /* Pourquoi rejoindre */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .benefit-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--red-canada);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+        
+        .benefit-card:hover .benefit-icon {
+            transform: rotate(360deg);
+        }
+        
+        .benefit-number {
+            font-size: 2.5rem;
+            font-family: var(--font-serif);
+            color: var(--red-canada);
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        /* Processus d'adhésion */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: var(--separator);
+            z-index: 0;
+        }
+        
+        .process-step {
+            text-align: center;
+            width: 200px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 4px solid var(--red-canada);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--red-canada);
+            transition: var(--transition);
+        }
+        
+        .process-step:hover .step-number {
+            background: var(--red-canada);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .step-icon {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--red-canada);
+        }
+        
+        .step-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .step-desc {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .founder-grid,
+            .corp-grid,
+            .testimonial-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <header id="header">
         <div class="container header-inner">
             <a href="index.html" class="logo">CANADA<span>MAURITIUS</span></a>
             <nav>
@@ -22,86 +376,313 @@
         </div>
     </header>
 
-    <section class="hero" style="min-height: 50vh;">
+    <!-- HERO -->
+    <section class="hero" style="min-height: 60vh;">
         <div class="container">
             <div class="hero-content">
                 <p class="section-label">Membres</p>
-                <h1>Nos membres sont des leaders décisionnels de premier plan</h1>
+                <h1>Un réseau d'excellence Canada-Maurice</h1>
                 <p class="lead">
-                    Entreprises canadiennes et mauriciennes de renom, institutions financières 
-                    et organisations de soutien au commerce international.
+                    Nos membres sont des leaders décisionnels de premier plan, 
+                    entreprises innovantes et institutions engagées dans le renforcement 
+                    des liens économiques entre nos deux nations.
                 </p>
             </div>
         </div>
     </section>
 
+    <!-- MEMBRES FONDATEURS -->
     <section>
         <div class="container">
-            <p class="section-label">Membres Fondateurs</p>
-            <p class="separator">* * *</p>
-            <div class="section-header">
-                <h2>Les entreprises qui ont cru en notre mission dès le départ</h2>
+            <p class="section-label animate-on-scroll">Membres Fondateurs</p>
+            <p class="separator animate-on-scroll">* * *</p>
+            <div class="section-header animate-on-scroll">
+                <h2>Les piliers de notre organisation</h2>
             </div>
             
-            <div class="members-list">
-                <div class="member-logo">Banque Nationale</div>
-                <div class="member-logo">Air Canada</div>
-                <div class="member-logo">SNC-Lavalin</div>
-                <div class="member-logo">Mauritius Telecom</div>
-                <div class="member-logo">Rogers Communications</div>
-                <div class="member-logo">Air Mauritius</div>
-                <div class="member-logo">CI Financial</div>
-                <div class="member-logo">Cim Financial</div>
+            <div class="founder-grid">
+                <div class="founder-card animate-on-scroll">
+                    <span class="founder-badge">Fondateur</span>
+                    <div class="founder-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Banque Nationale</h3>
+                    <p>Services financiers et investissements internationaux</p>
+                </div>
+                
+                <div class="founder-card animate-on-scroll">
+                    <span class="founder-badge">Fondateur</span>
+                    <div class="founder-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Air Canada</h3>
+                    <p>Transport aérien et connectivité bilatérale</p>
+                </div>
+                
+                <div class="founder-card animate-on-scroll">
+                    <span class="founder-badge">Fondateur</span>
+                    <div class="founder-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>SNC-Lavalin</h3>
+                    <p>Ingénierie et infrastructure</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section style="background: var(--bg-light);">
+    <!-- FILTRES -->
+    <section style="background: var(--bg-light); padding: 40px 0;">
         <div class="container">
-            <p class="section-label">Membres Corporatifs</p>
-            <p class="separator">* * *</p>
-            <div class="section-header">
-                <h2>Rejoignez un réseau d'excellence</h2>
-            </div>
-            
-            <div class="members-list">
-                <div class="member-logo">Deloitte Canada</div>
-                <div class="member-logo">EY Maurice</div>
-                <div class="member-logo">Fasken Martineau</div>
-                <div class="member-logo">BLC Robert & Associates</div>
-                <div class="member-logo">Export Development Canada</div>
-                <div class="member-logo">Economic Development Board</div>
-                <div class="member-logo">McGill University</div>
-                <div class="member-logo">University of Mauritius</div>
+            <div class="filters animate-on-scroll">
+                <button class="filter-btn active">Tous</button>
+                <button class="filter-btn">Finance</button>
+                <button class="filter-btn">Technologie</button>
+                <button class="filter-btn">Énergie</button>
+                <button class="filter-btn">Transport</button>
             </div>
         </div>
     </section>
 
+    <!-- MEMBRES CORPORATIFS -->
     <section>
         <div class="container">
-            <p class="section-label">Devenir Membre</p>
-            <p class="separator">* * *</p>
-            <div class="section-header">
+            <p class="section-label animate-on-scroll">Membres Corporatifs</p>
+            <p class="separator animate-on-scroll">* * *</p>
+            <div class="section-header animate-on-scroll">
+                <h2>Entreprises et institutions engagées</h2>
+            </div>
+            
+            <div class="corp-grid">
+                <div class="corp-card animate-on-scroll">
+                    <div class="corp-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Deloitte Canada</h4>
+                    <p class="corp-sector">Finance</p>
+                </div>
+                
+                <div class="corp-card animate-on-scroll">
+                    <div class="corp-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h4>TechMaurice</h4>
+                    <p class="corp-sector">Technologie</p>
+                </div>
+                
+                <div class="corp-card animate-on-scroll">
+                    <div class="corp-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h4>Green Energy Ltd</h4>
+                    <p class="corp-sector">Énergie</p>
+                </div>
+                
+                <div class="corp-card animate-on-scroll">
+                    <div class="corp-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h4>Port de Montréal</h4>
+                    <p class="corp-sector">Transport</p>
+                </div>
+                
+                <div class="corp-card animate-on-scroll">
+                    <div class="corp-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>McGill University</h4>
+                    <p class="corp-sector">Éducation</p>
+                </div>
+                
+                <div class="corp-card animate-on-scroll">
+                    <div class="corp-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h4>HealthCare Plus</h4>
+                    <p class="corp-sector">Santé</p>
+                </div>
+                
+                <div class="corp-card animate-on-scroll">
+                    <div class="corp-icon">
+                        <i class="fas fa-tractor"></i>
+                    </div>
+                    <h4>AgriMaurice</h4>
+                    <p class="corp-sector">Agriculture</p>
+                </div>
+                
+                <div class="corp-card animate-on-scroll">
+                    <div class="corp-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h4>Tourism Canada</h4>
+                    <p class="corp-sector">Tourisme</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TÉMOIGNAGES -->
+    <section class="testimonials">
+        <div class="container">
+            <p class="section-label animate-on-scroll">Témoignages</p>
+            <p class="separator animate-on-scroll">* * *</p>
+            <div class="section-header animate-on-scroll">
+                <h2>Ce que nos membres disent</h2>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Le CMBC nous a ouvert des portes que nous n'aurions jamais pu ouvrir seuls. 
+                        Le réseau est exceptionnel et les opportunités d'affaires concrètes."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Marie Lefebvre</h4>
+                            <p>CEO, TechExport Canada</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "Un partenariat stratégique qui a transformé notre approche du marché mauricien. 
+                        L'accompagnement est professionnel et personnalisé."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Raj Patel</h4>
+                            <p>Directeur, Mauritius Finance</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card animate-on-scroll">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="testimonial-text">
+                        "La francophonie au service des affaires. Une plateforme unique pour 
+                        connecter deux économies complémentaires."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Jean Dubois</h4>
+                            <p>Président, Conseil du Commerce</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POURQUOI REJOINDRE -->
+    <section>
+        <div class="container">
+            <p class="section-label animate-on-scroll">Avantages</p>
+            <p class="separator animate-on-scroll">* * *</p>
+            <div class="section-header animate-on-scroll">
                 <h2>Pourquoi rejoindre le CMBC ?</h2>
             </div>
             
-            <div class="grid-3">
-                <div class="card" style="background: var(--bg-light); border-radius: 4px;">
-                    <h3>Accès Privilégié</h3>
-                    <p>Rencontres exclusives avec les décideurs politiques et économiques des deux pays.</p>
+            <div class="benefits-grid">
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <span class="benefit-number">500+</span>
+                    <h4>Rencontres annuelles</h4>
+                    <p>Événements exclusifs et networking ciblé</p>
                 </div>
-                <div class="card" style="background: var(--bg-light); border-radius: 4px;">
-                    <h3>Intelligence Économique</h3>
-                    <p>Rapports sectoriels, analyses de marché et alertes opportunités en avant-première.</p>
+                
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <span class="benefit-number">10K+</span>
+                    <h4>Visibilité</h4>
+                    <p>Professionnels atteints par nos communications</p>
                 </div>
-                <div class="card" style="background: var(--bg-light); border-radius: 4px;">
-                    <h3>Visibilité</h3>
-                    <p>Présence sur tous nos supports de communication et lors des événements officiels.</p>
+                
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <span class="benefit-number">50+</span>
+                    <h4>Opportunités</h4>
+                    <p>Projets bilatéraux facilités chaque année</p>
+                </div>
+                
+                <div class="benefit-card animate-on-scroll">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <span class="benefit-number">2</span>
+                    <h4>Pays</h4>
+                    <p>Accès privilégié aux deux marchés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESSUS D'ADHÉSION -->
+    <section style="background: var(--bg-light);">
+        <div class="container">
+            <p class="section-label animate-on-scroll">Adhésion</p>
+            <p class="separator animate-on-scroll">* * *</p>
+            <div class="section-header animate-on-scroll">
+                <h2>Comment rejoindre le CMBC ?</h2>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h4 class="step-title">Candidature</h4>
+                    <p class="step-desc">Formulaire en ligne et documents requis</p>
+                </div>
+                
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4 class="step-title">Évaluation</h4>
+                    <p class="step-desc">Examen par le comité des membres</p>
+                </div>
+                
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4 class="step-title">Validation</h4>
+                    <p class="step-desc">Approbation et confirmation</p>
+                </div>
+                
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h4 class="step-title">Intégration</h4>
+                    <p class="step-desc">Accès immédiat aux bénéfices</p>
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 60px;">
-                <a href="contact.html" class="btn">Rejoindre le CMBC</a>
+            <div style="text-align: center; margin-top: 60px;" class="animate-on-scroll">
+                <a href="contact.html" class="btn">Devenir membre</a>
             </div>
         </div>
     </section>
@@ -111,5 +692,47 @@
             <p>&copy; 2026 Canada-Maurice Business Council. Tous droits réservés.</p>
         </div>
     </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 500);
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Filtres interactifs
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
