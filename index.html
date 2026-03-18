@@ -5,6 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canada-Maurice Business Council</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .flags-hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .flag {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .flags-divider {
+            font-size: 2rem;
+            color: var(--red-canada);
+            font-weight: 300;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .team-preview {
+            background: var(--bg-light);
+        }
+        
+        .team-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .team-preview-card {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+        
+        .team-preview-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .team-preview-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--bg-light);
+        }
+        
+        .team-preview-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .team-preview-card p {
+            color: var(--red-canada);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 768px) {
+            .flags-hero { flex-direction: column; gap: 20px; }
+            .flags-divider { transform: rotate(90deg); }
+            .team-preview-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -25,6 +104,12 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <div class="flags-hero">
+                    <img src="https://flagcdn.com/w160/ca.png" alt="Drapeau Canada" class="flag">
+                    <span class="flags-divider">×</span>
+                    <img src="https://flagcdn.com/w160/mu.png" alt="Drapeau Maurice" class="flag">
+                </div>
+                
                 <p class="tagline">Construire des ponts. Créer des opportunités. Renforcer les liens.</p>
                 <h1>Canada et Maurice : un partenariat stratégique pour l'avenir</h1>
                 <p class="lead">
@@ -49,14 +134,13 @@
                 <div class="content-text">
                     <p class="lead">
                         Depuis l'indépendance de Maurice en 1968, le Canada a été un partenaire 
-                        privilégié dans le développement économique et démocratique de l'île. 
-                        Notre relation repose sur des valeurs communes : le bilinguisme, 
-                        la diversité culturelle et l'excellence économique.
+                        privilégié dans le développement économique et démocratique de l'île.
                     </p>
                     <p>
-                        Le CMBC vise à transformer ce lien historique en opportunités concrètes 
-                        pour les entreprises des deux pays, particulièrement dans les secteurs 
-                        des technologies, des services financiers, de l'éducation et du tourisme durable.
+                        Notre relation repose sur des valeurs communes : le bilinguisme, 
+                        la diversité culturelle et l'excellence économique. Le CMBC vise à 
+                        transformer ce lien historique en opportunités concrètes pour les 
+                        entreprises des deux pays.
                     </p>
                     <a href="about.html" class="btn" style="margin-top: 20px;">En savoir plus</a>
                 </div>
@@ -90,35 +174,44 @@
         </div>
     </section>
 
-    <section>
+    <section class="team-preview">
         <div class="container">
-            <p class="section-label">Notre Vision</p>
+            <p class="section-label">Notre Équipe</p>
             <p class="separator">* * *</p>
             <div class="section-header">
-                <h2>Faciliter les relations durables entre leaders d'affaires</h2>
+                <h2>Des leaders engagés au service du partenariat Canada-Maurice</h2>
             </div>
             
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-icon">↗</div>
-                    <h3>Notre Vision</h3>
-                    <p>Devenir la plateforme incontournable pour les échanges commerciaux Canada-Maurice d'ici 2030.</p>
+            <div class="team-preview-grid">
+                <div class="team-preview-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop" alt="Padminee Chundunsing">
+                    <h3>Padminee Chundunsing</h3>
+                    <p>Fondatrice & Présidente</p>
                 </div>
-                <div class="card">
-                    <div class="card-icon">◆</div>
-                    <h3>Notre Mission</h3>
-                    <p>Connecter, défendre et accompagner les entreprises dans leurs projets bilatéraux.</p>
+                <div class="team-preview-card">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop" alt="VP">
+                    <h3>Jean-Pierre Lefebvre</h3>
+                    <p>Vice-Président</p>
                 </div>
-                <div class="card">
-                    <div class="card-icon">◎</div>
-                    <h3>Nos Valeurs</h3>
-                    <p>Intégrité, excellence, collaboration et impact mesurable.</p>
+                <div class="team-preview-card">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=300&fit=crop" alt="Secrétaire">
+                    <h3>Sandra Ramasamy</h3>
+                    <p>Secrétaire Générale</p>
                 </div>
+                <div class="team-preview-card">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop" alt="Trésorier">
+                    <h3>Michael Chen</h3>
+                    <p>Trésorier</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="leadership.html" class="btn">Découvrir notre leadership</a>
             </div>
         </div>
     </section>
 
-    <section style="background: var(--bg-light);">
+    <section>
         <div class="container">
             <p class="section-label">Actualités</p>
             <p class="separator">* * *</p>
@@ -126,17 +219,17 @@
                 <h2>Dernières nouvelles et événements</h2>
             </div>
             <div class="grid-3">
-                <div class="card" style="background: white; border-radius: 4px;">
+                <div class="card" style="background: var(--bg-light); border-radius: 4px;">
                     <h3>Lancement officiel du CMBC</h3>
                     <p style="color: var(--text-light); font-size: 0.875rem;">15 mars 2026</p>
                     <p style="margin-top: 15px;">Le Conseil d'affaires Canada-Maurice est officiellement constitué à Ottawa.</p>
                 </div>
-                <div class="card" style="background: white; border-radius: 4px;">
+                <div class="card" style="background: var(--bg-light); border-radius: 4px;">
                     <h3>Mission commerciale à Port-Louis</h3>
                     <p style="color: var(--text-light); font-size: 0.875rem;">Juin 2026</p>
                     <p style="margin-top: 15px;">Première délégation canadienne prévue pour le mois de juin.</p>
                 </div>
-                <div class="card" style="background: white; border-radius: 4px;">
+                <div class="card" style="background: var(--bg-light); border-radius: 4px;">
                     <h3>Partenariat avec MEDO</h3>
                     <p style="color: var(--text-light); font-size: 0.875rem;">En cours</p>
                     <p style="margin-top: 15px;">Signature d'un accord avec Mauritius Export Development.</p>

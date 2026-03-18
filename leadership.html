@@ -6,25 +6,42 @@
     <title>Leadership | Canada-Maurice Business Council</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .leadership-hero {
+        .founder-section {
             background: var(--bg-light);
             padding: 160px 0 100px;
         }
         
-        .leader-profile {
+        .founder-profile {
             display: grid;
             grid-template-columns: 400px 1fr;
             gap: 80px;
             align-items: start;
         }
         
-        .leader-portrait {
+        .founder-portrait {
             width: 100%;
             border-radius: 4px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
         }
         
-        .leader-quote {
+        .founder-header {
+            margin-bottom: 30px;
+        }
+        
+        .founder-name {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .founder-title {
+            color: var(--red-canada);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .founder-tagline {
             font-family: var(--font-serif);
             font-size: 1.5rem;
             font-style: italic;
@@ -34,36 +51,156 @@
             border-left: 3px solid var(--red-canada);
         }
         
+        .founder-bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+        
+        /* 4 Piliers style padminee */
         .pillars-section {
-            margin-top: 60px;
+            margin-top: 80px;
+        }
+        
+        .pillars-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .pillars-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
         }
         
         .pillar-item {
             display: grid;
-            grid-template-columns: 80px 1fr;
-            gap: 30px;
-            margin-bottom: 50px;
+            grid-template-columns: 100px 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
             align-items: start;
         }
         
         .pillar-number {
-            font-size: 3rem;
+            font-size: 4rem;
             font-family: var(--font-serif);
             color: var(--red-canada);
-            opacity: 0.3;
+            opacity: 0.2;
             line-height: 1;
+            font-weight: 700;
         }
         
         .pillar-content h3 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        
+        .pillar-content p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        /* Équipe */
+        .team-section {
+            padding: 100px 0;
         }
         
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
             margin-top: 60px;
+        }
+        
+        .team-card {
+            background: var(--bg-light);
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .team-card:hover {
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .team-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 4px solid white;
+        }
+        
+        .team-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+        
+        .team-role {
+            color: var(--red-canada);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .team-bio {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .team-contact {
+            margin-top: 20px;
+            font-size: 0.875rem;
+        }
+        
+        /* Conseil consultatif */
+        .advisory-section {
+            background: var(--bg-light);
+            padding: 100px 0;
+        }
+        
+        .advisory-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .advisory-card {
+            background: white;
+            padding: 30px;
+            border-radius: 4px;
+            border-left: 4px solid var(--red-canada);
+        }
+        
+        .advisory-card h4 {
+            font-family: var(--font-serif);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .advisory-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .founder-profile { grid-template-columns: 1fr; }
+            .founder-portrait { max-width: 300px; margin: 0 auto; }
+            .pillar-item { grid-template-columns: 60px 1fr; gap: 20px; }
+            .pillar-number { font-size: 2.5rem; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .advisory-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -83,45 +220,51 @@
         </div>
     </header>
 
-    <section class="leadership-hero">
+    <!-- PADMINEE CHUNDUNSING - FONDATRICE -->
+    <section class="founder-section">
         <div class="container">
-            <p class="section-label">Leadership</p>
-            <div class="leader-profile">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" alt="Présidente" class="leader-portrait">
+            <p class="section-label">Fondatrice</p>
+            
+            <div class="founder-profile">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" alt="Padminee Chundunsing" class="founder-portrait">
+                
                 <div>
-                    <h1 style="margin-bottom: 10px;">Marie-Claude Dubois</h1>
-                    <p style="color: var(--red-canada); text-transform: uppercase; letter-spacing: 2px; font-size: 0.875rem; margin-bottom: 30px;">Présidente du Conseil</p>
+                    <div class="founder-header">
+                        <h1 class="founder-name">Padminee Chundunsing</h1>
+                        <p class="founder-title">Fondatrice & Présidente du Canada-Maurice Business Council</p>
+                    </div>
                     
-                    <p class="lead" style="font-size: 1.25rem;">
-                        Une voix forte pour la francophonie économique canadienne à Maurice. 
-                        Leader communautaire, défenseure du bilinguisme, ambassadrice du vivre-ensemble.
+                    <p class="founder-tagline">
+                        "Une voix forte pour la francophonie canadienne. Construire des ponts, amplifier les voix, inspirer le changement."
                     </p>
                     
-                    <p class="leader-quote">
-                        "Un véritable leadership se mesure à sa capacité à rassembler et à faire avancer les choses — ensemble."
+                    <p class="founder-bio">
+                        Fière Mauricienne devenue Canadienne en 2009, j'ai choisi de servir, écouter et agir pour ma communauté d'adoption : la francophonie. Depuis mon arrivée au Canada en 2004, j'ai découvert la force des liens qui unissent nos communautés et l'importance de défendre nos droits linguistiques, culturels et éducatifs.
                     </p>
                     
-                    <p>
-                        Fondatrice du Canada-Maurice Business Council, Marie-Claude Dubois apporte 
-                        plus de 20 ans d'expérience dans le développement économique international. 
-                        Ancienne présidente de la Chambre de commerce Canada-Île Maurice, elle a 
-                        consacré sa carrière à tisser des liens durables entre les deux pays.
+                    <p class="founder-bio">
+                        Mon parcours m'a menée à présider la <strong>Fédération des francophones de la Colombie-Britannique (FFCB)</strong> pendant trois mandats consécutifs. Une expérience marquante qui m'a permis de mettre à profit mes capacités d'écoute, de diplomatie et de leadership collaboratif pour faire progresser la francophonie dans la province — et au-delà.
                     </p>
-                    <p>
-                        Son parcours incarne les valeurs du CMBC : consensus, implication communautaire, 
-                        vision à long terme et résultats concrets. Sous sa direction, le Conseil 
-                        ambitionne de doubler les échanges commerciaux bilatéraux d'ici 2030.
+                    
+                    <p class="founder-bio">
+                        Aujourd'hui, mon engagement se poursuit à travers la promotion du bilinguisme, de l'égalité des chances et de la diversité culturelle. Car je crois profondément que notre force, c'est notre unité dans la pluralité. Le Canada-Maurice Business Council est le fruit de cette conviction : créer des ponts économiques entre deux nations unies par la langue et les valeurs.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 4 PILIERS DE LEADERSHIP -->
     <section>
         <div class="container">
-            <p class="section-label">Philosophie</p>
-            <p class="separator">* * *</p>
-            <h2 style="text-align: center; margin-bottom: 60px;">Un leadership fondé sur l'écoute, la vision et les résultats</h2>
+            <div class="pillars-header">
+                <p class="section-label">Philosophie</p>
+                <p class="separator">* * *</p>
+                <h2>Un leadership fondé sur l'écoute, la vision et les résultats</h2>
+                <p style="color: var(--text-gray); margin-top: 20px; font-style: italic;">
+                    "Un véritable leadership se mesure à sa capacité à rassembler et à faire avancer les choses — ensemble."
+                </p>
+            </div>
             
             <div class="pillars-section">
                 <div class="pillar-item">
@@ -129,11 +272,7 @@
                     <div class="pillar-content">
                         <h3>Le Consensus</h3>
                         <p>
-                            Dans toutes ses fonctions, Marie-Claude a toujours privilégié le dialogue 
-                            et la recherche de solutions équilibrées. Rassembler plutôt que diviser, 
-                            écouter avant d'agir — c'est cette philosophie qui permet d'unir différentes 
-                            voix autour d'objectifs communs. Le consensus, c'est transformer les 
-                            divergences en opportunités d'unité.
+                            Dans toutes mes fonctions, j'ai toujours privilégié le dialogue et la recherche de solutions équilibrées. Rassembler plutôt que diviser, écouter avant d'agir — c'est cette philosophie qui m'a permis d'unir différentes voix autour d'objectifs communs. Mon engagement apolitique m'a donné la liberté de collaborer avec des élus de tous les horizons, tout en demeurant fidèle à une seule cause : le bien de la communauté francophone. Le consensus, c'est transformer les divergences en opportunités d'unité.
                         </p>
                     </div>
                 </div>
@@ -143,10 +282,7 @@
                     <div class="pillar-content">
                         <h3>L'Implication Communautaire</h3>
                         <p>
-                            Depuis sa première visite à Maurice en 2005, elle s'est investie dans 
-                            la vie économique locale à travers plusieurs organismes : Chambre de 
-                            commerce, Association des femmes entrepreneurs, Conseil du statut de 
-                            la femme, et nombreuses initiatives de mentorat pour jeunes entrepreneurs.
+                            Dès mon arrivée en Colombie-Britannique, j'ai contribué activement à la vie francophone à travers plusieurs organismes : Société de développement économique de la Colombie-Britannique, Centre de la francophonie des Amériques, Fédération des Francophones de la Colombie-Britannique, Le Relais Francophone, Centre culturel francophone de Vancouver, COPA National, Réseaux Femmes de la Colombie-Britannique, et Ethno Femmes Francophones. Ces expériences m'ont permis de tisser un réseau solide et d'agir au cœur des enjeux touchant les femmes, les familles et les nouveaux arrivants.
                         </p>
                     </div>
                 </div>
@@ -156,10 +292,7 @@
                     <div class="pillar-content">
                         <h3>La Vision à Long Terme</h3>
                         <p>
-                            La francophonie économique est une richesse vivante — à préserver, 
-                            à faire grandir et à transmettre avec fierté. Les défis sont réels : 
-                            la compétitivité, la transition numérique, la durabilité. Mais ces 
-                            défis appellent des solutions novatrices et durables.
+                            Ma vision pour la francophonie de demain : la francophonie est une richesse vivante — à préserver, à faire grandir et à transmettre avec fierté. Les défis sont réels : la compétitivité économique, la transition numérique, la durabilité. Mais ces défis appellent des solutions novatrices et durables. Mon rôle est de bâtir des fondations solides : défendre nos droits, renforcer nos institutions et créer des ponts entre les générations et les cultures. Je rêve d'une francophonie inclusive et rayonnante, présente dans tous les secteurs de la société.
                         </p>
                     </div>
                 </div>
@@ -169,10 +302,7 @@
                     <div class="pillar-content">
                         <h3>Des Résultats Concrets</h3>
                         <p>
-                            Le parcours est guidé par des valeurs, mais aussi par des résultats 
-                            tangibles : création de 500+ emplois par les entreprises accompagnées, 
-                            facilitation de 50M$ d'investissements bilatéraux, et signature de 
-                            12 accords de partenariat institutionnel.
+                            Mon parcours est guidé par des valeurs, mais aussi par des résultats tangibles : Prix de la Journée de la Francophonie remis par la province de la Colombie-Britannique, recours juridique historique sur les services à l'emploi contribuant à la modernisation de la Loi sur les langues officielles, bonification du Plan d'action pour les langues officielles 2018-2023, entente avec l'aéroport de Vancouver pour offrir des services d'accueil en français, et participation active à l'élaboration d'une politique provinciale des services en français. Ces réussites sont le fruit d'un travail collectif, porté par la conviction que la francophonie mérite d'être vue, entendue et célébrée.
                         </p>
                     </div>
                 </div>
@@ -180,32 +310,103 @@
         </div>
     </section>
 
-    <section style="background: var(--bg-light);">
+    <!-- ÉQUIPE CMBC -->
+    <section class="team-section">
         <div class="container">
-            <p class="section-label">Équipe</p>
+            <p class="section-label">Équipe de Direction</p>
             <p class="separator">* * *</p>
             <div class="section-header">
-                <h2>Une équipe dédiée au succès de nos membres</h2>
+                <h2>Les leaders du Canada-Maurice Business Council</h2>
             </div>
             
             <div class="team-grid">
-                <div class="leader-card">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop" alt="VP" class="leader-image">
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop" alt="Padminee Chundunsing" class="team-image">
+                    <h3>Padminee Chundunsing</h3>
+                    <p class="team-role">Fondatrice & Présidente</p>
+                    <p class="team-bio">
+                        Leader communautaire et défenseure de la francophonie. 20 ans d'expérience en développement économique international.
+                    </p>
+                    <p class="team-contact">
+                        <a href="mailto:padminee@canadamauritius.com">padminee@canadamauritius.com</a>
+                    </p>
+                </div>
+                
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop" alt="Jean-Pierre Lefebvre" class="team-image">
                     <h3>Jean-Pierre Lefebvre</h3>
-                    <p class="leader-role">Vice-Président</p>
-                    <p class="leader-bio">Expert en commerce international, 15 ans d'expérience Afrique subsaharienne.</p>
+                    <p class="team-role">Vice-Président</p>
+                    <p class="team-bio">
+                        Expert en commerce international avec 15 ans d'expérience en Afrique subsaharienne. Basé à Toronto.
+                    </p>
+                    <p class="team-contact">
+                        <a href="mailto:vp@canadamauritius.com">vp@canadamauritius.com</a>
+                    </p>
                 </div>
-                <div class="leader-card">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=300&fit=crop" alt="Secrétaire" class="leader-image">
+                
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=300&fit=crop" alt="Sandra Ramasamy" class="team-image">
                     <h3>Sandra Ramasamy</h3>
-                    <p class="leader-role">Secrétaire Générale</p>
-                    <p class="leader-bio">Avocate mauricienne spécialisée en droit des affaires internationales.</p>
+                    <p class="team-role">Secrétaire Générale</p>
+                    <p class="team-bio">
+                        Avocate mauricienne spécialisée en droit des affaires internationales. Basée à Port-Louis.
+                    </p>
+                    <p class="team-contact">
+                        <a href="mailto:secretariat@canadamauritius.com">secretariat@canadamauritius.com</a>
+                    </p>
                 </div>
-                <div class="leader-card">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop" alt="Trésorier" class="leader-image">
+                
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop" alt="Michael Chen" class="team-image">
                     <h3>Michael Chen</h3>
-                    <p class="leader-role">Trésorier</p>
-                    <p class="leader-bio">CPA, CA avec expertise en financement de projets internationaux.</p>
+                    <p class="team-role">Trésorier</p>
+                    <p class="team-bio">
+                        CPA, CA avec expertise en financement de projets internationaux. 12 ans chez Deloitte Canada.
+                    </p>
+                    <p class="team-contact">
+                        <a href="mailto:tresorier@canadamauritius.com">tresorier@canadamauritius.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONSEIL CONSULTATIF -->
+    <section class="advisory-section">
+        <div class="container">
+            <p class="section-label">Gouvernance</p>
+            <p class="separator">* * *</p>
+            <div class="section-header">
+                <h2>Conseil Consultatif</h2>
+                <p style="color: var(--text-gray); margin-top: 20px;">
+                    Experts de haut niveau guidant notre stratégie et renforçant notre crédibilité
+                </p>
+            </div>
+            
+            <div class="advisory-grid">
+                <div class="advisory-card">
+                    <h4>Robert Bissonnette</h4>
+                    <p>Ancien ambassadeur du Canada à Maurice</p>
+                </div>
+                <div class="advisory-card">
+                    <h4>Dr. Amina Patel</h4>
+                    <p>Économiste, University of Mauritius</p>
+                </div>
+                <div class="advisory-card">
+                    <h4>Jacques Tremblay</h4>
+                    <p>Président, Export Development Canada (retraité)</p>
+                </div>
+                <div class="advisory-card">
+                    <h4>Leela Ramgoolam</h4>
+                    <p>CEO, Mauritius Investment Corporation</p>
+                </div>
+                <div class="advisory-card">
+                    <h4>Prof. James Wilson</h4>
+                    <p>McGill University, spécialiste Afrique australe</p>
+                </div>
+                <div class="advisory-card">
+                    <h4>Daniel Wong</h4>
+                    <p>Entrepreneur, fondateur de 3 startups fintech</p>
                 </div>
             </div>
         </div>
