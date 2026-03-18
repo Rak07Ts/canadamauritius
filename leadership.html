@@ -7,8 +7,21 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         .founder-section {
-            background: var(--bg-light);
+            background: linear-gradient(135deg, var(--bg-light) 0%, #fff 100%);
             padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .founder-section::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(216, 6, 33, 0.05) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
         }
         
         .founder-profile {
@@ -16,21 +29,35 @@
             grid-template-columns: 400px 1fr;
             gap: 80px;
             align-items: start;
+            position: relative;
+            z-index: 1;
         }
         
         .founder-portrait {
             width: 100%;
-            border-radius: 4px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            box-shadow: var(--shadow-xl);
+            transition: var(--transition);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .founder-portrait:hover {
+            transform: scale(1.02) rotate(-2deg);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
         }
         
         .founder-header {
             margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
         
         .founder-name {
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--text-dark) 0%, var(--red-canada) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .founder-title {
@@ -48,7 +75,8 @@
             color: var(--red-canada);
             margin: 30px 0;
             padding-left: 30px;
-            border-left: 3px solid var(--red-canada);
+            border-left: 4px solid var(--red-canada);
+            animation: slideInLeft 0.8s ease 0.4s both;
         }
         
         .founder-bio {
@@ -56,9 +84,10 @@
             line-height: 1.8;
             color: var(--text-gray);
             margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease 0.5s both;
         }
         
-        /* 4 Piliers style padminee */
+        /* 4 Piliers */
         .pillars-section {
             margin-top: 80px;
         }
@@ -70,7 +99,7 @@
         
         .pillars-header h2 {
             font-family: var(--font-serif);
-            font-size: 2rem;
+            font-size: 2.25rem;
         }
         
         .pillar-item {
@@ -79,15 +108,32 @@
             gap: 40px;
             margin-bottom: 60px;
             align-items: start;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+        
+        .pillar-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-lg);
+            border-left-color: var(--red-canada);
         }
         
         .pillar-number {
             font-size: 4rem;
             font-family: var(--font-serif);
             color: var(--red-canada);
-            opacity: 0.2;
+            opacity: 0.15;
             line-height: 1;
             font-weight: 700;
+            transition: var(--transition);
+        }
+        
+        .pillar-item:hover .pillar-number {
+            opacity: 0.3;
+            transform: scale(1.1);
         }
         
         .pillar-content h3 {
@@ -106,26 +152,44 @@
         /* Équipe */
         .team-section {
             padding: 100px 0;
+            background: var(--bg-light);
         }
         
         .team-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
-            margin-top: 60px;
         }
         
         .team-card {
-            background: var(--bg-light);
+            background: white;
             padding: 40px 30px;
             text-align: center;
-            border-radius: 4px;
-            transition: all 0.3s;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red-canada), var(--red-dark));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-card:hover::before {
+            transform: scaleX(1);
         }
         
         .team-card:hover {
-            background: white;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
         }
         
         .team-image {
@@ -134,13 +198,25 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 25px;
-            border: 4px solid white;
+            border: 4px solid var(--bg-light);
+            transition: var(--transition);
+        }
+        
+        .team-card:hover .team-image {
+            border-color: var(--red-canada);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(216, 6, 33, 0.2);
         }
         
         .team-card h3 {
             font-family: var(--font-serif);
             font-size: 1.25rem;
             margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+        
+        .team-card:hover h3 {
+            color: var(--red-canada);
         }
         
         .team-role {
@@ -158,54 +234,21 @@
             line-height: 1.6;
         }
         
-        .team-contact {
-            margin-top: 20px;
-            font-size: 0.875rem;
-        }
-        
-        /* Conseil consultatif */
-        .advisory-section {
-            background: var(--bg-light);
-            padding: 100px 0;
-        }
-        
-        .advisory-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 60px;
-        }
-        
-        .advisory-card {
-            background: white;
-            padding: 30px;
-            border-radius: 4px;
-            border-left: 4px solid var(--red-canada);
-        }
-        
-        .advisory-card h4 {
-            font-family: var(--font-serif);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .advisory-card p {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-        
         @media (max-width: 768px) {
             .founder-profile { grid-template-columns: 1fr; }
             .founder-portrait { max-width: 300px; margin: 0 auto; }
             .pillar-item { grid-template-columns: 60px 1fr; gap: 20px; }
             .pillar-number { font-size: 2.5rem; }
             .team-grid { grid-template-columns: repeat(2, 1fr); }
-            .advisory-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <header>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <header id="header">
         <div class="container header-inner">
             <a href="index.html" class="logo">CANADA<span>MAURITIUS</span></a>
             <nav>
@@ -220,13 +263,13 @@
         </div>
     </header>
 
-    <!-- PADMINEE CHUNDUNSING - FONDATRICE -->
-    <section class="founder-section">
+    <!-- PADMINEE CHUNDUNSING -->
+    <section class="founder-section" id="padminee">
         <div class="container">
-            <p class="section-label">Fondatrice</p>
+            <p class="section-label animate-on-scroll">Fondatrice</p>
             
             <div class="founder-profile">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" alt="Padminee Chundunsing" class="founder-portrait">
+                <img src="images/team-padminee.jpg" alt="Portrait professionnel de Padminee Chundunsing - Fondatrice et Présidente du CMBC, vêtue d'un sari noir élégant, leader en gouvernance et plaidoyer francophone" class="founder-portrait">
                 
                 <div>
                     <div class="founder-header">
@@ -239,25 +282,27 @@
                     </p>
                     
                     <p class="founder-bio">
-                        Fière Mauricienne devenue Canadienne en 2009, j'ai choisi de servir, écouter et agir pour ma communauté d'adoption : la francophonie. Depuis mon arrivée au Canada en 2004, j'ai découvert la force des liens qui unissent nos communautés et l'importance de défendre nos droits linguistiques, culturels et éducatifs.
+                        Padminee est une catalyseuse pour la croissance inclusive et l'engagement francophone. Forte d'une expérience approfondie en gouvernance, plaidoyer et leadership communautaire, elle fait le pont entre les cultures et autonomise la collaboration entre les secteurs pour créer un impact social et économique durable.
                     </p>
                     
                     <p class="founder-bio">
-                        Mon parcours m'a menée à présider la <strong>Fédération des francophones de la Colombie-Britannique (FFCB)</strong> pendant trois mandats consécutifs. Une expérience marquante qui m'a permis de mettre à profit mes capacités d'écoute, de diplomatie et de leadership collaboratif pour faire progresser la francophonie dans la province — et au-delà.
+                        Fière Mauricienne devenue Canadienne en 2009, elle a choisi de servir, écouter et agir pour sa communauté d'adoption : la francophonie. Son parcours l'a menée à présider la <strong>Fédération des francophones de la Colombie-Britannique (FFCB)</strong> pendant trois mandats consécutifs.
                     </p>
                     
-                    <p class="founder-bio">
-                        Aujourd'hui, mon engagement se poursuit à travers la promotion du bilinguisme, de l'égalité des chances et de la diversité culturelle. Car je crois profondément que notre force, c'est notre unité dans la pluralité. Le Canada-Maurice Business Council est le fruit de cette conviction : créer des ponts économiques entre deux nations unies par la langue et les valeurs.
-                    </p>
+                    <div class="social-links">
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="#" title="Twitter">X</a>
+                        <a href="#" title="Email">@</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4 PILIERS DE LEADERSHIP -->
+    <!-- 4 PILIERS -->
     <section>
         <div class="container">
-            <div class="pillars-header">
+            <div class="pillars-header animate-on-scroll">
                 <p class="section-label">Philosophie</p>
                 <p class="separator">* * *</p>
                 <h2>Un leadership fondé sur l'écoute, la vision et les résultats</h2>
@@ -267,42 +312,42 @@
             </div>
             
             <div class="pillars-section">
-                <div class="pillar-item">
+                <div class="pillar-item animate-on-scroll">
                     <span class="pillar-number">01</span>
                     <div class="pillar-content">
                         <h3>Le Consensus</h3>
                         <p>
-                            Dans toutes mes fonctions, j'ai toujours privilégié le dialogue et la recherche de solutions équilibrées. Rassembler plutôt que diviser, écouter avant d'agir — c'est cette philosophie qui m'a permis d'unir différentes voix autour d'objectifs communs. Mon engagement apolitique m'a donné la liberté de collaborer avec des élus de tous les horizons, tout en demeurant fidèle à une seule cause : le bien de la communauté francophone. Le consensus, c'est transformer les divergences en opportunités d'unité.
+                            Dans toutes ses fonctions, Padminee a toujours privilégié le dialogue et la recherche de solutions équilibrées. Rassembler plutôt que diviser, écouter avant d'agir — c'est cette philosophie qui lui a permis d'unir différentes voix autour d'objectifs communs.
                         </p>
                     </div>
                 </div>
                 
-                <div class="pillar-item">
+                <div class="pillar-item animate-on-scroll">
                     <span class="pillar-number">02</span>
                     <div class="pillar-content">
                         <h3>L'Implication Communautaire</h3>
                         <p>
-                            Dès mon arrivée en Colombie-Britannique, j'ai contribué activement à la vie francophone à travers plusieurs organismes : Société de développement économique de la Colombie-Britannique, Centre de la francophonie des Amériques, Fédération des Francophones de la Colombie-Britannique, Le Relais Francophone, Centre culturel francophone de Vancouver, COPA National, Réseaux Femmes de la Colombie-Britannique, et Ethno Femmes Francophones. Ces expériences m'ont permis de tisser un réseau solide et d'agir au cœur des enjeux touchant les femmes, les familles et les nouveaux arrivants.
+                            Dès son arrivée en Colombie-Britannique, elle a contribué activement à la vie francophone à travers plusieurs organismes : Fédération des Francophones de la Colombie-Britannique, Centre culturel francophone de Vancouver, et Ethno Femmes Francophones.
                         </p>
                     </div>
                 </div>
                 
-                <div class="pillar-item">
+                <div class="pillar-item animate-on-scroll">
                     <span class="pillar-number">03</span>
                     <div class="pillar-content">
                         <h3>La Vision à Long Terme</h3>
                         <p>
-                            Ma vision pour la francophonie de demain : la francophonie est une richesse vivante — à préserver, à faire grandir et à transmettre avec fierté. Les défis sont réels : la compétitivité économique, la transition numérique, la durabilité. Mais ces défis appellent des solutions novatrices et durables. Mon rôle est de bâtir des fondations solides : défendre nos droits, renforcer nos institutions et créer des ponts entre les générations et les cultures. Je rêve d'une francophonie inclusive et rayonnante, présente dans tous les secteurs de la société.
+                            Sa vision pour la francophonie de demain : une richesse vivante — à préserver, à faire grandir et à transmettre avec fierté. Les défis sont réels : compétitivité économique, transition numérique, durabilité.
                         </p>
                     </div>
                 </div>
                 
-                <div class="pillar-item">
+                <div class="pillar-item animate-on-scroll">
                     <span class="pillar-number">04</span>
                     <div class="pillar-content">
                         <h3>Des Résultats Concrets</h3>
                         <p>
-                            Mon parcours est guidé par des valeurs, mais aussi par des résultats tangibles : Prix de la Journée de la Francophonie remis par la province de la Colombie-Britannique, recours juridique historique sur les services à l'emploi contribuant à la modernisation de la Loi sur les langues officielles, bonification du Plan d'action pour les langues officielles 2018-2023, entente avec l'aéroport de Vancouver pour offrir des services d'accueil en français, et participation active à l'élaboration d'une politique provinciale des services en français. Ces réussites sont le fruit d'un travail collectif, porté par la conviction que la francophonie mérite d'être vue, entendue et célébrée.
+                            Prix de la Journée de la Francophonie, recours juridique historique sur les services à l'emploi, et participation active à l'élaboration d'une politique provinciale des services en français.
                         </p>
                     </div>
                 </div>
@@ -310,103 +355,66 @@
         </div>
     </section>
 
-    <!-- ÉQUIPE CMBC -->
+    <!-- ÉQUIPE -->
     <section class="team-section">
         <div class="container">
-            <p class="section-label">Équipe de Direction</p>
-            <p class="separator">* * *</p>
-            <div class="section-header">
-                <h2>Les leaders du Canada-Maurice Business Council</h2>
+            <p class="section-label animate-on-scroll">Équipe de Direction</p>
+            <p class="separator animate-on-scroll">* * *</p>
+            <div class="section-header animate-on-scroll">
+                <h2>Les fondateurs du Canada-Maurice Business Council</h2>
             </div>
             
             <div class="team-grid">
-                <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop" alt="Padminee Chundunsing" class="team-image">
+                <div class="team-card animate-on-scroll" id="padminee-card">
+                    <img src="images/team-padminee.jpg" alt="Padminee Chundunsing - Fondatrice et Présidente du CMBC, catalyseuse pour la croissance inclusive et l'engagement francophone" class="team-image">
                     <h3>Padminee Chundunsing</h3>
                     <p class="team-role">Fondatrice & Présidente</p>
                     <p class="team-bio">
-                        Leader communautaire et défenseure de la francophonie. 20 ans d'expérience en développement économique international.
+                        Catalyseuse pour la croissance inclusive et l'engagement francophone. Expertise en gouvernance, plaidoyer et leadership communautaire.
                     </p>
-                    <p class="team-contact">
-                        <a href="mailto:padminee@canadamauritius.com">padminee@canadamauritius.com</a>
-                    </p>
+                    <div class="social-links" style="justify-content: center; margin-top: 20px;">
+                        <a href="#" style="width: 35px; height: 35px; font-size: 0.8rem;">in</a>
+                        <a href="#" style="width: 35px; height: 35px; font-size: 0.8rem;">X</a>
+                    </div>
                 </div>
                 
-                <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop" alt="Jean-Pierre Lefebvre" class="team-image">
-                    <h3>Jean-Pierre Lefebvre</h3>
-                    <p class="team-role">Vice-Président</p>
+                <div class="team-card animate-on-scroll" id="cedric">
+                    <img src="images/team-cedric.jpg" alt="Cedric - Stratège en communications et marketing bilingue, spécialiste relations internationales et innovation digitale" class="team-image">
+                    <h3>Cedric</h3>
+                    <p class="team-role">Communications & Stratégie</p>
                     <p class="team-bio">
-                        Expert en commerce international avec 15 ans d'expérience en Afrique subsaharienne. Basé à Toronto.
+                        Stratège marketing bilingue et leader en communications. Plus d'une décennie d'expérience en stratégie, médias et relations internationales.
                     </p>
-                    <p class="team-contact">
-                        <a href="mailto:vp@canadamauritius.com">vp@canadamauritius.com</a>
-                    </p>
+                    <div class="social-links" style="justify-content: center; margin-top: 20px;">
+                        <a href="#" style="width: 35px; height: 35px; font-size: 0.8rem;">in</a>
+                        <a href="#" style="width: 35px; height: 35px; font-size: 0.8rem;">X</a>
+                    </div>
                 </div>
                 
-                <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=300&fit=crop" alt="Sandra Ramasamy" class="team-image">
-                    <h3>Sandra Ramasamy</h3>
-                    <p class="team-role">Secrétaire Générale</p>
+                <div class="team-card animate-on-scroll" id="mohammad">
+                    <img src="images/team-mohammad.jpg" alt="Mohammad - Professionnel de la finance bilingue, expertise en gestion de portefeuilles gouvernementaux multi-milliardaires" class="team-image">
+                    <h3>Mohammad</h3>
+                    <p class="team-role">Finance & Développement</p>
                     <p class="team-bio">
-                        Avocate mauricienne spécialisée en droit des affaires internationales. Basée à Port-Louis.
+                        Professionnel de la finance bilingue avec expérience dans le gouvernement et organisations internationales. Gestion de portefeuilles multi-milliardaires.
                     </p>
-                    <p class="team-contact">
-                        <a href="mailto:secretariat@canadamauritius.com">secretariat@canadamauritius.com</a>
-                    </p>
+                    <div class="social-links" style="justify-content: center; margin-top: 20px;">
+                        <a href="#" style="width: 35px; height: 35px; font-size: 0.8rem;">in</a>
+                        <a href="#" style="width: 35px; height: 35px; font-size: 0.8rem;">X</a>
+                    </div>
                 </div>
                 
-                <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop" alt="Michael Chen" class="team-image">
-                    <h3>Michael Chen</h3>
-                    <p class="team-role">Trésorier</p>
+                <div class="team-card animate-on-scroll" id="daniel">
+                    <img src="images/team-daniel.jpg" alt="Daniel - Spécialiste en relations commerciales Canada-Maurice, expertise analyse de marché et stratégies d'investissement bilatérales" class="team-image">
+                    <h3>Daniel</h3>
+                    <p class="team-role">Relations Commerciales</p>
                     <p class="team-bio">
-                        CPA, CA avec expertise en financement de projets internationaux. 12 ans chez Deloitte Canada.
+                        Expert en analyse de marché et identification d'opportunités bilatérales. Développement de stratégies pour stimuler le commerce et l'investissement.
                     </p>
-                    <p class="team-contact">
-                        <a href="mailto:tresorier@canadamauritius.com">tresorier@canadamauritius.com</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONSEIL CONSULTATIF -->
-    <section class="advisory-section">
-        <div class="container">
-            <p class="section-label">Gouvernance</p>
-            <p class="separator">* * *</p>
-            <div class="section-header">
-                <h2>Conseil Consultatif</h2>
-                <p style="color: var(--text-gray); margin-top: 20px;">
-                    Experts de haut niveau guidant notre stratégie et renforçant notre crédibilité
-                </p>
-            </div>
-            
-            <div class="advisory-grid">
-                <div class="advisory-card">
-                    <h4>Robert Bissonnette</h4>
-                    <p>Ancien ambassadeur du Canada à Maurice</p>
-                </div>
-                <div class="advisory-card">
-                    <h4>Dr. Amina Patel</h4>
-                    <p>Économiste, University of Mauritius</p>
-                </div>
-                <div class="advisory-card">
-                    <h4>Jacques Tremblay</h4>
-                    <p>Président, Export Development Canada (retraité)</p>
-                </div>
-                <div class="advisory-card">
-                    <h4>Leela Ramgoolam</h4>
-                    <p>CEO, Mauritius Investment Corporation</p>
-                </div>
-                <div class="advisory-card">
-                    <h4>Prof. James Wilson</h4>
-                    <p>McGill University, spécialiste Afrique australe</p>
-                </div>
-                <div class="advisory-card">
-                    <h4>Daniel Wong</h4>
-                    <p>Entrepreneur, fondateur de 3 startups fintech</p>
+                    <div class="social-links" style="justify-content: center; margin-top: 20px;">
+                        <a href="#" style="width: 35px; height: 35px; font-size: 0.8rem;">in</a>
+                        <a href="#" style="width: 35px; height: 35px; font-size: 0.8rem;">X</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -417,5 +425,39 @@
             <p>&copy; 2026 Canada-Maurice Business Council. Tous droits réservés.</p>
         </div>
     </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 500);
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>

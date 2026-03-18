@@ -12,6 +12,7 @@
             align-items: center;
             gap: 40px;
             margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 0.1s both;
         }
         
         .flag {
@@ -19,19 +20,25 @@
             height: 80px;
             object-fit: cover;
             border-radius: 4px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .flag:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .flag:last-child {
+            animation-delay: -3s;
         }
         
         .flags-divider {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--red-canada);
             font-weight: 300;
-        }
-        
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+            animation: pulse 2s ease-in-out infinite;
         }
         
         .team-preview {
@@ -49,12 +56,14 @@
             text-align: center;
             padding: 30px;
             background: white;
-            border-radius: 4px;
-            transition: transform 0.3s;
+            border-radius: 8px;
+            transition: var(--transition);
+            cursor: pointer;
         }
         
         .team-preview-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
         }
         
         .team-preview-card img {
@@ -64,15 +73,26 @@
             object-fit: cover;
             margin-bottom: 20px;
             border: 3px solid var(--bg-light);
+            transition: var(--transition);
+        }
+        
+        .team-preview-card:hover img {
+            border-color: var(--red-canada);
+            transform: scale(1.1);
         }
         
         .team-preview-card h3 {
             font-size: 1.1rem;
             margin-bottom: 5px;
+            transition: color 0.3s;
+        }
+        
+        .team-preview-card:hover h3 {
+            color: var(--red-canada);
         }
         
         .team-preview-card p {
-            color: var(--red-canada);
+            color: var(--text-gray);
             font-size: 0.875rem;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -86,7 +106,12 @@
     </style>
 </head>
 <body>
-    <header>
+    <!-- Loading screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <header id="header">
         <div class="container header-inner">
             <a href="index.html" class="logo">CANADA<span>MAURITIUS</span></a>
             <nav>
@@ -105,9 +130,9 @@
         <div class="container">
             <div class="hero-content">
                 <div class="flags-hero">
-                    <img src="https://flagcdn.com/w160/ca.png" alt="Drapeau Canada" class="flag">
+                    <img src="images/flag-canada.jpg" alt="Drapeau du Canada - Maple leaf rouge sur fond blanc avec bandes rouges" class="flag">
                     <span class="flags-divider">×</span>
-                    <img src="https://flagcdn.com/w160/mu.png" alt="Drapeau Maurice" class="flag">
+                    <img src="images/flag-mauritius.jpg" alt="Drapeau de Maurice - Quatre bandes rouge, bleue, jaune et verte" class="flag">
                 </div>
                 
                 <p class="tagline">Construire des ponts. Créer des opportunités. Renforcer les liens.</p>
@@ -124,14 +149,14 @@
 
     <section>
         <div class="container">
-            <p class="section-label">À Propos</p>
-            <p class="separator">* * *</p>
-            <div class="section-header">
+            <p class="section-label animate-on-scroll">À Propos</p>
+            <p class="separator animate-on-scroll">* * *</p>
+            <div class="section-header animate-on-scroll">
                 <h2>Deux nations unies par l'histoire, la langue et les opportunités économiques</h2>
             </div>
             
             <div class="content-split">
-                <div class="content-text">
+                <div class="content-text animate-on-scroll">
                     <p class="lead">
                         Depuis l'indépendance de Maurice en 1968, le Canada a été un partenaire 
                         privilégié dans le développement économique et démocratique de l'île.
@@ -144,8 +169,8 @@
                     </p>
                     <a href="about.html" class="btn" style="margin-top: 20px;">En savoir plus</a>
                 </div>
-                <div class="content-image">
-                    <img src="https://images.unsplash.com/photo-1523293188086-b15e4af7491d?w=600" alt="Maurice">
+                <div class="content-image animate-on-scroll">
+                    <img src="images/mauritius-landscape.jpg" alt="Paysage de Maurice - Montagne du Morne Brabant avec océan turquoise">
                 </div>
             </div>
         </div>
@@ -154,20 +179,20 @@
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat">
-                    <span class="stat-number">1968</span>
+                <div class="stat animate-on-scroll">
+                    <span class="stat-number" data-target="1968">0</span>
                     <span class="stat-label">Relations diplomatiques</span>
                 </div>
-                <div class="stat">
-                    <span class="stat-number">50+</span>
+                <div class="stat animate-on-scroll">
+                    <span class="stat-number" data-target="50">0</span>
                     <span class="stat-label">Entreprises membres</span>
                 </div>
-                <div class="stat">
+                <div class="stat animate-on-scroll">
                     <span class="stat-number">$200M</span>
                     <span class="stat-label">Volume commercial</span>
                 </div>
-                <div class="stat">
-                    <span class="stat-number">2</span>
+                <div class="stat animate-on-scroll">
+                    <span class="stat-number" data-target="2">0</span>
                     <span class="stat-label">Bureaux (Ottawa/Port-Louis)</span>
                 </div>
             </div>
@@ -176,36 +201,36 @@
 
     <section class="team-preview">
         <div class="container">
-            <p class="section-label">Notre Équipe</p>
-            <p class="separator">* * *</p>
-            <div class="section-header">
-                <h2>Des leaders engagés au service du partenariat Canada-Maurice</h2>
+            <p class="section-label animate-on-scroll">Notre Équipe</p>
+            <p class="separator animate-on-scroll">* * *</p>
+            <div class="section-header animate-on-scroll">
+                <h2>Les fondateurs du Canada-Maurice Business Council</h2>
             </div>
             
             <div class="team-preview-grid">
-                <div class="team-preview-card">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop" alt="Padminee Chundunsing">
+                <div class="team-preview-card animate-on-scroll" onclick="window.location.href='leadership.html#padminee'">
+                    <img src="images/team-padminee.jpg" alt="Padminee Chundunsing - Fondatrice et Présidente du CMBC, leader en gouvernance et plaidoyer francophone">
                     <h3>Padminee Chundunsing</h3>
                     <p>Fondatrice & Présidente</p>
                 </div>
-                <div class="team-preview-card">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop" alt="VP">
-                    <h3>Jean-Pierre Lefebvre</h3>
-                    <p>Vice-Président</p>
+                <div class="team-preview-card animate-on-scroll" onclick="window.location.href='leadership.html#cedric'">
+                    <img src="images/team-cedric.jpg" alt="Cedric - Stratège en communications et marketing bilingue, spécialiste relations internationales">
+                    <h3>Cedric</h3>
+                    <p>Communications & Stratégie</p>
                 </div>
-                <div class="team-preview-card">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=300&fit=crop" alt="Secrétaire">
-                    <h3>Sandra Ramasamy</h3>
-                    <p>Secrétaire Générale</p>
+                <div class="team-preview-card animate-on-scroll" onclick="window.location.href='leadership.html#mohammad'">
+                    <img src="images/team-mohammad.jpg" alt="Mohammad - Expert finance bilingue, gestion portefeuilles gouvernement internationaux">
+                    <h3>Mohammad</h3>
+                    <p>Finance & Développement</p>
                 </div>
-                <div class="team-preview-card">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop" alt="Trésorier">
-                    <h3>Michael Chen</h3>
-                    <p>Trésorier</p>
+                <div class="team-preview-card animate-on-scroll" onclick="window.location.href='leadership.html#daniel'">
+                    <img src="images/team-daniel.jpg" alt="Daniel - Spécialiste relations commerciales Canada-Maurice, analyse de marché bilatéral">
+                    <h3>Daniel</h3>
+                    <p>Relations Commerciales</p>
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 50px;">
+            <div style="text-align: center; margin-top: 50px;" class="animate-on-scroll">
                 <a href="leadership.html" class="btn">Découvrir notre leadership</a>
             </div>
         </div>
@@ -213,23 +238,23 @@
 
     <section>
         <div class="container">
-            <p class="section-label">Actualités</p>
-            <p class="separator">* * *</p>
-            <div class="section-header">
+            <p class="section-label animate-on-scroll">Actualités</p>
+            <p class="separator animate-on-scroll">* * *</p>
+            <div class="section-header animate-on-scroll">
                 <h2>Dernières nouvelles et événements</h2>
             </div>
             <div class="grid-3">
-                <div class="card" style="background: var(--bg-light); border-radius: 4px;">
+                <div class="card animate-on-scroll">
                     <h3>Lancement officiel du CMBC</h3>
                     <p style="color: var(--text-light); font-size: 0.875rem;">15 mars 2026</p>
                     <p style="margin-top: 15px;">Le Conseil d'affaires Canada-Maurice est officiellement constitué à Ottawa.</p>
                 </div>
-                <div class="card" style="background: var(--bg-light); border-radius: 4px;">
+                <div class="card animate-on-scroll">
                     <h3>Mission commerciale à Port-Louis</h3>
                     <p style="color: var(--text-light); font-size: 0.875rem;">Juin 2026</p>
                     <p style="margin-top: 15px;">Première délégation canadienne prévue pour le mois de juin.</p>
                 </div>
-                <div class="card" style="background: var(--bg-light); border-radius: 4px;">
+                <div class="card animate-on-scroll">
                     <h3>Partenariat avec MEDO</h3>
                     <p style="color: var(--text-light); font-size: 0.875rem;">En cours</p>
                     <p style="margin-top: 15px;">Signature d'un accord avec Mauritius Export Development.</p>
@@ -243,5 +268,63 @@
             <p>&copy; 2026 Canada-Maurice Business Council. Tous droits réservés.</p>
         </div>
     </footer>
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 500);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate numbers
+                    const statNumbers = entry.target.querySelectorAll('.stat-number[data-target]');
+                    statNumbers.forEach(num => {
+                        const target = parseInt(num.getAttribute('data-target'));
+                        animateNumber(num, target);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        function animateNumber(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 30);
+        }
+    </script>
 </body>
 </html>
