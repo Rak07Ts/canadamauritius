@@ -6,6 +6,32 @@
     <title>Canada-Maurice Business Council</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
+        /* Option 1: Image unique des deux drapeaux (recommandé) */
+        .flags-hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+        
+        .flags-image {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+        
+        .flags-image:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* 
+        Option 2: Drapeaux séparés côte à côte (décommenter pour utiliser)
+        
         .flags-hero {
             display: flex;
             justify-content: center;
@@ -40,6 +66,7 @@
             font-weight: 300;
             animation: pulse 2s ease-in-out infinite;
         }
+        */
         
         .team-preview {
             background: var(--bg-light);
@@ -99,8 +126,7 @@
         }
         
         @media (max-width: 768px) {
-            .flags-hero { flex-direction: column; gap: 20px; }
-            .flags-divider { transform: rotate(90deg); }
+            .flags-image { max-width: 250px; }
             .team-preview-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
@@ -129,11 +155,20 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <!-- Option 1: Image unique des deux drapeaux -->
                 <div class="flags-hero">
-                    <img src="images/flag-canada.jpg" alt="Drapeau du Canada - Maple leaf rouge sur fond blanc avec bandes rouges" class="flag">
-                    <span class="flags-divider">×</span>
-                    <img src="images/flag-mauritius.jpg" alt="Drapeau de Maurice - Quatre bandes rouge, bleue, jaune et verte" class="flag">
+                    <img src="images/flags-canada-maurice.webp" alt="Drapeaux du Canada et de Maurice côte à côte symbolisant le partenariat bilatéral" class="flags-image">
                 </div>
+                
+                <!-- 
+                Option 2: Drapeaux séparés (décommenter pour utiliser)
+                
+                <div class="flags-hero">
+                    <img src="images/flag-canada.png" alt="Drapeau du Canada - Maple leaf rouge sur fond blanc avec bandes rouges" class="flag">
+                    <span class="flags-divider">×</span>
+                    <img src="images/flag-maurice.jpg" alt="Drapeau de Maurice - Quatre bandes rouge, bleue, jaune et verte" class="flag">
+                </div>
+                -->
                 
                 <p class="tagline">Construire des ponts. Créer des opportunités. Renforcer les liens.</p>
                 <h1>Canada et Maurice : un partenariat stratégique pour l'avenir</h1>
@@ -170,7 +205,7 @@
                     <a href="about.html" class="btn" style="margin-top: 20px;">En savoir plus</a>
                 </div>
                 <div class="content-image animate-on-scroll">
-                    <img src="images/mauritius-landscape.jpg" alt="Paysage de Maurice - Montagne du Morne Brabant avec océan turquoise">
+                    <img src="images/mauritius-landscape.webp" alt="Paysage de Maurice - Montagne du Morne Brabant avec océan turquoise">
                 </div>
             </div>
         </div>
