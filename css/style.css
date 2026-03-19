@@ -12,6 +12,7 @@
     --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --container: 1100px;
     --section-padding: 100px;
+    --section-padding-mobile: 60px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -184,6 +185,7 @@ header.scrolled {
     align-items: center;
     height: 80px;
     transition: var(--transition);
+    position: relative;
 }
 
 header.scrolled .header-inner {
@@ -198,6 +200,7 @@ header.scrolled .header-inner {
     letter-spacing: -0.5px;
     transition: var(--transition);
     position: relative;
+    z-index: 1001;
 }
 
 .logo::after {
@@ -220,6 +223,7 @@ header.scrolled .header-inner {
     font-weight: 400;
 }
 
+/* Navigation Desktop */
 nav ul {
     display: flex;
     list-style: none;
@@ -254,6 +258,41 @@ nav a.active::after {
 
 nav a:hover {
     color: var(--red-canada);
+}
+
+/* Menu Mobile Toggle */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background: var(--text-dark);
+    border-radius: 2px;
+    transition: var(--transition);
+    transform-origin: center;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* Hero avec parallax */
@@ -789,27 +828,145 @@ footer {
     to { transform: rotate(360deg); }
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.75rem; }
+/* ============================================
+   RESPONSIVE - TABLETTE (max-width: 1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+    :root {
+        --section-padding: 80px;
+    }
     
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .content-split {
+        gap: 40px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE (max-width: 768px)
+   ============================================ */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 60px;
+    }
+    
+    /* Typography mobile */
+    h1 { font-size: 1.75rem; line-height: 1.2; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    
+    /* Header mobile avec menu hamburger */
     .header-inner {
-        flex-direction: column;
-        height: auto;
-        padding: 20px 0;
+        height: 70px;
+        padding: 0 15px;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: white;
+        box-shadow: var(--shadow-xl);
+        transition: left 0.3s ease;
+        z-index: 1000;
+        padding-top: 100px;
+    }
+    
+    nav.active {
+        left: 0;
     }
     
     nav ul {
-        gap: 20px;
-        margin-top: 20px;
+        flex-direction: column;
+        gap: 0;
+        padding: 20px;
     }
     
+    nav a {
+        display: block;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--separator);
+        font-size: 1rem;
+    }
+    
+    nav a::after {
+        display: none;
+    }
+    
+    /* Overlay quand menu ouvert */
+    .nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+        z-index: 999;
+    }
+    
+    .nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Hero mobile */
     .hero {
-        margin-top: 120px;
-        min-height: 70vh;
+        margin-top: 70px;
+        min-height: auto;
+        padding: 60px 0;
     }
     
+    .hero h1 {
+        margin-bottom: 20px;
+    }
+    
+    .hero .tagline {
+        font-size: 1.1rem;
+    }
+    
+    .hero .lead {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    
+    /* Boutons empilés */
+    .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .btn-outline {
+        margin-left: 0;
+    }
+    
+    /* Grilles en 1 colonne */
     .grid-3,
     .grid-2,
     .content-split,
@@ -817,14 +974,91 @@ footer {
     .team-grid,
     .contact-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
     
+    /* Content split */
     .content-split.reverse {
         direction: ltr;
     }
     
-    .btn-outline {
-        margin-left: 0;
-        margin-top: 15px;
+    .content-image {
+        order: -1;
+    }
+    
+    .content-image img {
+        max-height: 300px;
+        object-fit: cover;
+    }
+    
+    /* Stats */
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    /* Team cards */
+    .team-card {
+        padding: 30px 20px;
+    }
+    
+    .team-image {
+        width: 120px;
+        height: 120px;
+    }
+    
+    /* Contact */
+    .contact-grid {
+        gap: 50px;
+    }
+    
+    .contact-item {
+        padding-left: 15px;
+    }
+    
+    /* Section padding réduit */
+    section {
+        padding: var(--section-padding) 0;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
+    /* Cards */
+    .card {
+        padding: 30px 20px;
+    }
+}
+
+/* ============================================
+   RESPONSIVE - PETIT MOBILE (max-width: 480px)
+   ============================================ */
+@media (max-width: 480px) {
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.25rem; }
+    
+    .logo {
+        font-size: 1.25rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+    
+    .section-label {
+        font-size: 0.7rem;
+    }
+    
+    .separator {
+        font-size: 1.2rem;
+        letter-spacing: 5px;
     }
 }

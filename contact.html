@@ -7,20 +7,29 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
+    <header id="header">
         <div class="container header-inner">
             <a href="index.html" class="logo">CANADA<span>MAURITIUS</span></a>
+            
             <nav>
                 <ul>
-                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html" class="active">Accueil</a></li>
                     <li><a href="about.html">À Propos</a></li>
                     <li><a href="leadership.html">Leadership</a></li>
                     <li><a href="members.html">Membres</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
+
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <section class="contact-section" style="margin-top: 80px; padding: 120px 0;">
         <div class="container">
@@ -91,5 +100,6 @@
             <p>&copy; 2026 Canada-Maurice Business Council. Tous droits réservés.</p>
         </div>
     </footer>
+    <script src="js/main.js"></script>
 </body>
 </html>

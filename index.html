@@ -140,6 +140,7 @@
     <header id="header">
         <div class="container header-inner">
             <a href="index.html" class="logo">CANADA<span>MAURITIUS</span></a>
+            
             <nav>
                 <ul>
                     <li><a href="index.html" class="active">Accueil</a></li>
@@ -149,8 +150,16 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
+
+    <div class="nav-overlay" id="navOverlay"></div>
 
     <section class="hero">
         <div class="container">
@@ -361,5 +370,6 @@
             }, 30);
         }
     </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
