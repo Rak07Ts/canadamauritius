@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
             loader.style.opacity = '0';
             setTimeout(() => { loader.style.display = 'none'; }, 500);
         });
-        // Fallback: hide after 3 seconds even if load event doesn't fire
         setTimeout(() => {
             loader.style.opacity = '0';
             setTimeout(() => { loader.style.display = 'none'; }, 500);
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.style.overflow = '';
             });
         }
-        // Close on link click (mobile)
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('open');
@@ -55,6 +53,30 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    /* ---------- Stagger siblings in grids ---------- */
+    const staggerContainers = document.querySelectorAll(
+        '.news-grid, .focus-grid, .resource-grid, .services-grid, .members-wall, .leadership-grid, .timeline'
+    );
+    staggerContainers.forEach(container => {
+        const children = container.querySelectorAll('.animate-on-scroll');
+        children.forEach((child, i) => {
+            child.classList.add('stagger-' + Math.min(i + 1, 9));
+        });
+    });
+
+    /* ---------- Split layout directional animations ---------- */
+    document.querySelectorAll('.split').forEach(split => {
+        const isReverse = split.classList.contains('split--reverse');
+        const children = split.children;
+        if (children[0]) {
+            const textAnimations = children[0].querySelectorAll('.animate-on-scroll');
+            textAnimations.forEach(el => el.classList.add(isReverse ? 'from-right' : 'from-left'));
+        }
+        if (children[1] && children[1].classList.contains('animate-on-scroll')) {
+            children[1].classList.add(isReverse ? 'from-left' : 'from-right');
+        }
+    });
 
     /* ---------- Animate on scroll (IntersectionObserver) ---------- */
     const animatedEls = document.querySelectorAll('.animate-on-scroll');
@@ -66,11 +88,66 @@ document.addEventListener('DOMContentLoaded', () => {
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
         animatedEls.forEach(el => observer.observe(el));
     } else {
-        // Fallback: make everything visible
         animatedEls.forEach(el => el.classList.add('visible'));
+    }
+
+    /* ---------- Subtle parallax on hero background ---------- */
+    const heroBg = document.querySelector('.hero-bg');
+    if (heroBg) {
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrolled = window.scrollY;
+                    if (scrolled < window.innerHeight) {
+                        heroBg.style.transform = 'translateY(' + (scrolled * 0.25) + 'px) scale(1.05)';
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
+    /* ---------- Counter animation for stat numbers ---------- */
+    const statNumbers = document.querySelectorAll('.stat-number');
+    if (statNumbers.length && 'IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.textContent.replace(/[^\d]/g, ''), 10);
+                    const suffix = el.textContent.replace(/[\d]/g, '');
+                    if (isNaN(target)) return;
+                    let current = 0;
+                    const step = Math.max(1, Math.floor(target / 50));
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) { current = target; clearInterval(timer); }
+                        el.textContent = current + suffix;
+                    }, 25);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        statNumbers.forEach(el => counterObserver.observe(el));
+    }
+
+    /* ---------- Section label red line animation ---------- */
+    const labels = document.querySelectorAll('.section-label');
+    if (labels.length && 'IntersectionObserver' in window) {
+        const labelObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('line-visible');
+                    labelObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        labels.forEach(el => labelObserver.observe(el));
     }
 
     /* ---------- Smooth scroll for anchor links ---------- */
@@ -79,7 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(anchor.getAttribute('href'));
             if (target) {
                 e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const headerH = header ? header.offsetHeight : 0;
+                const y = target.getBoundingClientRect().top + window.pageYOffset - headerH - 20;
+                window.scrollTo({ top: y, behavior: 'smooth' });
             }
         });
     });
