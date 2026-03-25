@@ -1,375 +1,237 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canada-Maurice Business Council</title>
+    <title>Canada Mauritius Trade and Investment Venture</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Option 1: Image unique des deux drapeaux (recommandé) */
-        .flags-hero {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 40px;
-            animation: fadeInUp 0.8s ease 0.1s both;
-        }
-        
-        .flags-image {
-            max-width: 300px;
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition);
-        }
-        
-        .flags-image:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        /* 
-        Option 2: Drapeaux séparés côte à côte (décommenter pour utiliser)
-        
-        .flags-hero {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 40px;
-            animation: fadeInUp 0.8s ease 0.1s both;
-        }
-        
-        .flag {
-            width: 120px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 4px;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition);
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .flag:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .flag:last-child {
-            animation-delay: -3s;
-        }
-        
-        .flags-divider {
-            font-size: 2.5rem;
-            color: var(--red-canada);
-            font-weight: 300;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        */
-        
-        .team-preview {
-            background: var(--bg-light);
-        }
-        
-        .team-preview-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-top: 60px;
-        }
-        
-        .team-preview-card {
-            text-align: center;
-            padding: 30px;
-            background: white;
-            border-radius: 8px;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        
-        .team-preview-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .team-preview-card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 3px solid var(--bg-light);
-            transition: var(--transition);
-        }
-        
-        .team-preview-card:hover img {
-            border-color: var(--red-canada);
-            transform: scale(1.1);
-        }
-        
-        .team-preview-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            transition: color 0.3s;
-        }
-        
-        .team-preview-card:hover h3 {
-            color: var(--red-canada);
-        }
-        
-        .team-preview-card p {
-            color: var(--text-gray);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        @media (max-width: 768px) {
-            .flags-image { max-width: 250px; }
-            .team-preview-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-    </style>
 </head>
 <body>
-    <!-- Loading screen -->
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-    </div>
+    <!-- Loading -->
+    <div class="loading" id="loading"><div class="spinner"></div></div>
 
-    <header id="header">
+    <!-- Header -->
+    <header class="header" id="header">
         <div class="container header-inner">
-            <a href="index.html" class="logo">CANADA<span>MAURITIUS</span></a>
-            
-            <nav>
+            <a href="index.html" class="logo"><img src="images/logo.jpg" alt="Canada Mauritius Trade and Investment Venture" class="logo-img"></a>
+            <nav class="nav" id="nav">
                 <ul>
-                    <li><a href="index.html" class="active">Accueil</a></li>
-                    <li><a href="about.html">À Propos</a></li>
-                    <li><a href="leadership.html">Leadership</a></li>
-                    <li><a href="members.html">Membres</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="news.html">News &amp; Events</a></li>
+                    <li><a href="focus-areas.html">Focus Areas</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            
+            <div class="header-social">
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="X / Twitter">X</a>
+            </div>
             <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
         </div>
     </header>
-
     <div class="nav-overlay" id="navOverlay"></div>
 
+    <!-- Hero -->
     <section class="hero">
+        <div class="hero-bg" style="background-image: url('images/hero-home.jpg');" role="img" aria-label="Aerial view of Canada and Mauritius landmarks representing bilateral partnership"></div>
+        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
-                <!-- Option 1: Image unique des deux drapeaux -->
-                <div class="flags-hero">
-                    <img src="images/flag-canada-mauritius.webp" alt="Drapeaux du Canada et de Maurice côte à côte symbolisant le partenariat bilatéral" class="flags-image">
+                <div class="hero-box">
+                    <p class="hero-welcome">Welcome</p>
+                    <h1 class="hero-title">Canada Mauritius<br>Trade and Investment Venture</h1>
+                    <p class="hero-subtitle">Connecting Canada and Mauritius through structured trade, investment and strategic partnership.</p>
+                    <a href="#about" class="hero-arrow" aria-label="Scroll down">↓</a>
                 </div>
-                
-                <!-- 
-                Option 2: Drapeaux séparés (décommenter pour utiliser)
-                
-                <div class="flags-hero">
-                    <img src="images/flag-canada.png" alt="Drapeau du Canada - Maple leaf rouge sur fond blanc avec bandes rouges" class="flag">
-                    <span class="flags-divider">×</span>
-                    <img src="images/flag-maurice.jpg" alt="Drapeau de Maurice - Quatre bandes rouge, bleue, jaune et verte" class="flag">
-                </div>
-                -->
-                
-                <p class="tagline">Construire des ponts. Créer des opportunités. Renforcer les liens.</p>
-                <h1>Canada et Maurice : un partenariat stratégique pour l'avenir</h1>
-                <p class="lead">
-                    Le Canada-Maurice Business Council est l'organisation business-led de référence 
-                    pour promouvoir le commerce et l'investissement entre le Canada et la République de Maurice.
-                </p>
-                <a href="about.html" class="btn">Découvrir notre mission</a>
-                <a href="contact.html" class="btn btn-outline">Devenir membre</a>
             </div>
         </div>
     </section>
 
-    <section>
+    <!-- About Section -->
+    <section class="section" id="about">
         <div class="container">
-            <p class="section-label animate-on-scroll">À Propos</p>
-            <p class="separator animate-on-scroll">* * *</p>
-            <div class="section-header animate-on-scroll">
-                <h2>Deux nations unies par l'histoire, la langue et les opportunités économiques</h2>
+            <div class="split">
+                <div>
+                    <span class="section-label">About</span>
+                    <h2 class="section-heading animate-on-scroll">Canada and Mauritius are well positioned to deepen a high-value bilateral relationship.</h2>
+                    <p class="animate-on-scroll">Canada and Mauritius share strong foundations for long-term cooperation: democratic institutions, Commonwealth ties, bilingual and multicultural environments, and a growing interest in innovation-led, globally connected growth.</p>
+                    <p class="animate-on-scroll">Mauritius offers a strategic gateway into Africa and the Indian Ocean region, with strengths in financial services, logistics, tourism, education, renewable energy and international business. Canada offers deep capabilities in investment, technology, clean growth, infrastructure, education, advanced services and diaspora-driven entrepreneurship.</p>
+                    <p class="animate-on-scroll">The opportunity now is to transform this connection into a more structured and visible corridor for trade, investment, knowledge exchange and business development.</p>
+                </div>
+                <div class="split-image animate-on-scroll">
+                    <img src="images/about-bilateral.jpg" alt="Canada and Mauritius bilateral partnership — flags and business leaders meeting">
+                </div>
             </div>
-            
-            <div class="content-split">
-                <div class="content-text animate-on-scroll">
-                    <p class="lead">
-                        Depuis l'indépendance de Maurice en 1968, le Canada a été un partenaire 
-                        privilégié dans le développement économique et démocratique de l'île.
+        </div>
+    </section>
+
+    <!-- Organization Intro -->
+    <section class="section section--gray">
+        <div class="container">
+            <div class="split split--reverse">
+                <div>
+                    <h2 class="section-heading animate-on-scroll">The Canada Mauritius Trade and Investment Venture</h2>
+                    <p class="animate-on-scroll">The Canada Mauritius Trade and Investment Venture is a Canada-based initiative dedicated to strengthening bilateral economic ties between Canada and Mauritius. It brings together business leaders, investors, institutions, entrepreneurs and community stakeholders to build practical bridges across both markets.</p>
+                    <p class="animate-on-scroll">The Venture supports dialogue, facilitation, visibility and continuity in the way bilateral opportunities are identified and advanced.</p>
+                    <p class="animate-on-scroll">Its purpose is not only to celebrate the Canada-Mauritius relationship, but to help convert that relationship into meaningful projects, partnerships and long-term shared prosperity.</p>
+                    <a href="about.html" class="read-more animate-on-scroll">Read more</a>
+                </div>
+                <div class="split-image animate-on-scroll">
+                    <img src="images/about-venture.jpg" alt="Business event showcasing Canada-Mauritius trade and investment activities">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision / Mission Block -->
+    <section class="section">
+        <div class="container">
+            <div class="vm-block animate-on-scroll">
+                <div class="vm-icon">📈</div>
+                <div>
+                    <h4>Our Vision</h4>
+                    <p>Our vision is to help build a thriving Canada-Mauritius partnership that promotes sustainable progress, knowledge exchange, inclusive opportunity and long-term economic cooperation.</p>
+                    <div class="vm-mission">
+                        <p class="vm-mission-label">Our Mission</p>
+                        <p>The Canada Mauritius Trade and Investment Venture is a business-led platform that promotes bilateral trade, investment and strategic collaboration between Canada and Mauritius.</p>
+                        <p>Our mission is to facilitate relationships and initiatives that improve bilateral market accessibility, strengthen institutional and private-sector engagement, and increase high-quality trade and investment opportunities.</p>
+                    </div>
+                    <a href="about.html" class="read-more mt-20">Read more</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members / Network -->
+    <section class="section section--gray">
+        <div class="container">
+            <span class="section-label animate-on-scroll">Our Network</span>
+            <h2 class="section-heading animate-on-scroll">Our network brings together senior decision-makers, founders, institutional partners and strategic advisors committed to stronger Canada-Mauritius ties.</h2>
+            <p class="section-intro animate-on-scroll">This network is designed to connect qualified stakeholders across both markets, creating value through structured collaboration, knowledge exchange and shared opportunity.</p>
+
+            <div class="members-wall animate-on-scroll">
+                <div class="member-logo-placeholder">Partner 1</div>
+                <div class="member-logo-placeholder">Partner 2</div>
+                <div class="member-logo-placeholder">Partner 3</div>
+                <div class="member-logo-placeholder">Partner 4</div>
+                <div class="member-logo-placeholder">Partner 5</div>
+                <div class="member-logo-placeholder">Partner 6</div>
+                <div class="member-logo-placeholder">Partner 7</div>
+                <div class="member-logo-placeholder">Partner 8</div>
+                <div class="member-logo-placeholder">Partner 9</div>
+                <div class="member-logo-placeholder">Partner 10</div>
+                <div class="member-logo-placeholder">Partner 11</div>
+                <div class="member-logo-placeholder">Partner 12</div>
+            </div>
+
+            <div class="mt-40 animate-on-scroll">
+                <a href="membership.html" class="read-more">Read more</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News & Events -->
+    <section class="section">
+        <div class="container">
+            <span class="section-label animate-on-scroll">Latest News &amp; Events</span>
+            <div class="news-grid mt-40">
+                <a href="news.html" class="news-card animate-on-scroll" style="text-decoration:none;color:inherit;">
+                    <div class="news-card-image">
+                        <img src="images/news-mission.jpg" alt="Exploratory business mission from Canada to Mauritius">
+                    </div>
+                    <div class="news-card-body">
+                        <p class="news-card-date">January 12–15, 2026</p>
+                        <h3>Exploratory Business Mission to Mauritius</h3>
+                        <p>The Venture is leading an exploratory business mission from Canada to Mauritius to engage public and private stakeholders.</p>
+                        <span class="read-more">Read more</span>
+                    </div>
+                </a>
+                <a href="news.html" class="news-card animate-on-scroll" style="text-decoration:none;color:inherit;">
+                    <div class="news-card-image">
+                        <img src="images/news-leadership.jpg" alt="Padminee Chundunsing, President and Founder of Canada Mauritius Venture">
+                    </div>
+                    <div class="news-card-body">
+                        <p class="news-card-date">January 2026</p>
+                        <h3>Leadership Spotlight: Padminee Chundunsing</h3>
+                        <p>Padminee Chundunsing, President and Founder, provides strategic direction for the organization.</p>
+                        <span class="read-more">Read more</span>
+                    </div>
+                </a>
+                <a href="news.html" class="news-card animate-on-scroll" style="text-decoration:none;color:inherit;">
+                    <div class="news-card-image">
+                        <img src="images/news-embassy.jpg" alt="Advocacy for a Mauritian embassy in Canada">
+                    </div>
+                    <div class="news-card-body">
+                        <p class="news-card-date">2026</p>
+                        <h3>Advocacy Focus: A Mauritian Embassy in Canada</h3>
+                        <p>The Venture continues to highlight the strategic importance of establishing a Mauritian embassy in Canada.</p>
+                        <span class="read-more">Read more</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Follow Us -->
+    <section class="section section--dark">
+        <div class="container text-center">
+            <span class="section-label animate-on-scroll" style="color:rgba(255,255,255,0.6);">Follow Us</span>
+            <div class="social-links animate-on-scroll" style="justify-content:center; margin-top:20px;">
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="X / Twitter">X</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="X / Twitter">X</a>
+                    </div>
+                    <p class="mt-20" style="font-size:0.82rem;">
+                        <a href="https://canadamauritius.com" style="color:rgba(255,255,255,0.6);">canadamauritius.com</a><br>
+                        <a href="https://padminee.ca" style="color:rgba(255,255,255,0.6);">padminee.ca</a>
                     </p>
-                    <p>
-                        Notre relation repose sur des valeurs communes : le bilinguisme, 
-                        la diversité culturelle et l'excellence économique. Le CMBC vise à 
-                        transformer ce lien historique en opportunités concrètes pour les 
-                        entreprises des deux pays.
-                    </p>
-                    <a href="about.html" class="btn" style="margin-top: 20px;">En savoir plus</a>
                 </div>
-                <div class="content-image animate-on-scroll">
-                    <img src="images/mauritius-landscape.jpg" alt="Paysage de Maurice - Montagne du Morne Brabant avec océan turquoise">
+                <div>
+                    <h4>Site</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="news.html">News &amp; Events</a></li>
+                        <li><a href="focus-areas.html">Focus Areas</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat animate-on-scroll">
-                    <span class="stat-number" data-target="1968">0</span>
-                    <span class="stat-label">Relations diplomatiques</span>
+                <div>
+                    <h4>Contact</h4>
+                    <p><a href="mailto:info@canadamauritius.com" style="color:rgba(255,255,255,0.6);">info@canadamauritius.com</a></p>
+                    <p><a href="https://canadamauritius.com" style="color:rgba(255,255,255,0.6);">canadamauritius.com</a></p>
                 </div>
-                <div class="stat animate-on-scroll">
-                    <span class="stat-number" data-target="50">0</span>
-                    <span class="stat-label">Entreprises membres</span>
-                </div>
-                <div class="stat animate-on-scroll">
-                    <span class="stat-number">$200M</span>
-                    <span class="stat-label">Volume commercial</span>
-                </div>
-                <div class="stat animate-on-scroll">
-                    <span class="stat-number" data-target="2">0</span>
-                    <span class="stat-label">Bureaux (Ottawa/Port-Louis)</span>
+                <div>
+                    <h4>Join Our Newsletter</h4>
+                    <form class="newsletter-form" onsubmit="return false;">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit">Sign Up</button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="team-preview">
-        <div class="container">
-            <p class="section-label animate-on-scroll">Notre Équipe</p>
-            <p class="separator animate-on-scroll">* * *</p>
-            <div class="section-header animate-on-scroll">
-                <h2>Les fondateurs du Canada-Maurice Business Council</h2>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Canada Mauritius Trade and Investment Venture. All rights reserved.</p>
             </div>
-            
-            <div class="team-preview-grid">
-                <div class="team-preview-card animate-on-scroll" onclick="window.location.href='leadership.html#padminee'">
-                    <img src="images/team-padminee.webp" alt="Padminee Chundunsing - Fondatrice et Présidente du CMBC, leader en gouvernance et plaidoyer francophone">
-                    <h3>Padminee Chundunsing</h3>
-                    <p>Fondatrice & Présidente</p>
-                </div>
-                <div class="team-preview-card animate-on-scroll" onclick="window.location.href='leadership.html#cedric'">
-                    <img src="images/team-cedric.webp" alt="Cedric - Stratège en communications et marketing bilingue, spécialiste relations internationales">
-                    <h3>Cedric</h3>
-                    <p>Communications & Stratégie</p>
-                </div>
-                <div class="team-preview-card animate-on-scroll" onclick="window.location.href='leadership.html#mohammad'">
-                    <img src="images/team-mohammad.webp" alt="Mohammad - Expert finance bilingue, gestion portefeuilles gouvernement internationaux">
-                    <h3>Mohammad</h3>
-                    <p>Finance & Développement</p>
-                </div>
-                <div class="team-preview-card animate-on-scroll" onclick="window.location.href='leadership.html#daniel'">
-                    <img src="images/team-daniel.webp" alt="Daniel - Spécialiste relations commerciales Canada-Maurice, analyse de marché bilatéral">
-                    <h3>Daniel</h3>
-                    <p>Relations Commerciales</p>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 50px;" class="animate-on-scroll">
-                <a href="leadership.html" class="btn">Découvrir notre leadership</a>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <p class="section-label animate-on-scroll">Actualités</p>
-            <p class="separator animate-on-scroll">* * *</p>
-            <div class="section-header animate-on-scroll">
-                <h2>Dernières nouvelles et événements</h2>
-            </div>
-            <div class="grid-3">
-                <div class="card animate-on-scroll">
-                    <h3>Lancement officiel du CMBC</h3>
-                    <p style="color: var(--text-light); font-size: 0.875rem;">15 mars 2026</p>
-                    <p style="margin-top: 15px;">Le Conseil d'affaires Canada-Maurice est officiellement constitué à Ottawa.</p>
-                </div>
-                <div class="card animate-on-scroll">
-                    <h3>Mission commerciale à Port-Louis</h3>
-                    <p style="color: var(--text-light); font-size: 0.875rem;">Juin 2026</p>
-                    <p style="margin-top: 15px;">Première délégation canadienne prévue pour le mois de juin.</p>
-                </div>
-                <div class="card animate-on-scroll">
-                    <h3>Partenariat avec MEDO</h3>
-                    <p style="color: var(--text-light); font-size: 0.875rem;">En cours</p>
-                    <p style="margin-top: 15px;">Signature d'un accord avec Mauritius Export Development.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Canada-Maurice Business Council. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <script>
-        // Loading screen
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
-            }, 500);
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Animate on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // Animate numbers
-                    const statNumbers = entry.target.querySelectorAll('.stat-number[data-target]');
-                    statNumbers.forEach(num => {
-                        const target = parseInt(num.getAttribute('data-target'));
-                        animateNumber(num, target);
-                    });
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        function animateNumber(element, target) {
-            let current = 0;
-            const increment = target / 50;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current);
-                }
-            }, 30);
-        }
-    </script>
     <script src="js/main.js"></script>
 </body>
 </html>

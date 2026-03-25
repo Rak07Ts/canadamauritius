@@ -1,150 +1,86 @@
-// ============================================
-// CANADA-MAURITIUS BUSINESS COUNCIL
-// Main JavaScript File
-// ============================================
+/* ===== main.js — Canada Mauritius Trade and Investment Venture ===== */
 
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // ============================================
-    // LOADING SCREEN
-    // ============================================
-    const loading = document.getElementById('loading');
-    if (loading) {
+document.addEventListener('DOMContentLoaded', () => {
+    /* ---------- Loading screen ---------- */
+    const loader = document.getElementById('loading');
+    if (loader) {
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                loading.classList.add('hidden');
-            }, 500);
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 500);
         });
+        // Fallback: hide after 3 seconds even if load event doesn't fire
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 500);
+        }, 3000);
     }
-    
-    // ============================================
-    // HEADER SCROLL EFFECT
-    // ============================================
+
+    /* ---------- Header scroll ---------- */
     const header = document.getElementById('header');
     if (header) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        const onScroll = () => {
+            header.classList.toggle('scrolled', window.scrollY > 60);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
     }
-    
-    // ============================================
-    // MOBILE MENU TOGGLE
-    // ============================================
+
+    /* ---------- Mobile menu ---------- */
     const menuToggle = document.getElementById('menuToggle');
-    const nav = document.querySelector('nav');
-    const navOverlay = document.getElementById('navOverlay');
-    
+    const nav = document.getElementById('nav');
+    const overlay = document.getElementById('navOverlay');
+
     if (menuToggle && nav) {
         menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            nav.classList.toggle('active');
-            if (navOverlay) {
-                navOverlay.classList.toggle('active');
-            }
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+            const isOpen = nav.classList.toggle('open');
+            menuToggle.classList.toggle('open', isOpen);
+            if (overlay) overlay.classList.toggle('open', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         });
-        
-        // Fermer menu au clic sur l'overlay
-        if (navOverlay) {
-            navOverlay.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                nav.classList.remove('active');
-                navOverlay.classList.remove('active');
+        if (overlay) {
+            overlay.addEventListener('click', () => {
+                nav.classList.remove('open');
+                menuToggle.classList.remove('open');
+                overlay.classList.remove('open');
                 document.body.style.overflow = '';
             });
         }
-        
-        // Fermer menu au clic sur un lien
+        // Close on link click (mobile)
         nav.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                nav.classList.remove('active');
-                if (navOverlay) {
-                    navOverlay.classList.remove('active');
-                }
+                nav.classList.remove('open');
+                menuToggle.classList.remove('open');
+                if (overlay) overlay.classList.remove('open');
                 document.body.style.overflow = '';
             });
         });
     }
-    
-    // ============================================
-    // ANIMATE ON SCROLL
-    // ============================================
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                
-                // Animate numbers in stats
-                const statNumbers = entry.target.querySelectorAll('.stat-number[data-target]');
-                statNumbers.forEach(num => {
-                    const target = parseInt(num.getAttribute('data-target'));
-                    if (!num.classList.contains('animated')) {
-                        num.classList.add('animated');
-                        animateNumber(num, target);
-                    }
-                });
-            }
-        });
-    }, observerOptions);
-    
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-    });
-    
-    function animateNumber(element, target) {
-        let current = 0;
-        const increment = target / 50;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                element.textContent = target;
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(current);
-            }
-        }, 30);
-    }
-    
-    // ============================================
-    // FILTERS (Members page)
-    // ============================================
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    if (filterBtns.length > 0) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
+
+    /* ---------- Animate on scroll (IntersectionObserver) ---------- */
+    const animatedEls = document.querySelectorAll('.animate-on-scroll');
+    if (animatedEls.length && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
             });
-        });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        animatedEls.forEach(el => observer.observe(el));
+    } else {
+        // Fallback: make everything visible
+        animatedEls.forEach(el => el.classList.add('visible'));
     }
-    
-    // ============================================
-    // SMOOTH SCROLL FOR ANCHOR LINKS
-    // ============================================
+
+    /* ---------- Smooth scroll for anchor links ---------- */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
+        anchor.addEventListener('click', (e) => {
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) {
                 e.preventDefault();
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
-    
 });

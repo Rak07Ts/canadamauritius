@@ -1,145 +1,255 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À Propos | Canada-Maurice Business Council</title>
+    <title>About Us | Canada Mauritius Trade and Investment Venture</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header id="header">
+    <div class="loading" id="loading"><div class="spinner"></div></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
         <div class="container header-inner">
-            <a href="index.html" class="logo">CANADA<span>MAURITIUS</span></a>
-            
-            <nav>
+            <a href="index.html" class="logo"><img src="images/logo.jpg" alt="Canada Mauritius Trade and Investment Venture" class="logo-img"></a>
+            <nav class="nav" id="nav">
                 <ul>
-                    <li><a href="index.html" class="active">Accueil</a></li>
-                    <li><a href="about.html">À Propos</a></li>
-                    <li><a href="leadership.html">Leadership</a></li>
-                    <li><a href="members.html">Membres</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About Us</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="news.html">News &amp; Events</a></li>
+                    <li><a href="focus-areas.html">Focus Areas</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            
+            <div class="header-social">
+                <a href="#" aria-label="LinkedIn">in</a>
+                <a href="#" aria-label="X / Twitter">X</a>
+            </div>
             <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
         </div>
     </header>
-
     <div class="nav-overlay" id="navOverlay"></div>
 
-    <section class="hero" style="min-height: 50vh;">
+    <!-- Page Hero -->
+    <section class="page-hero">
         <div class="container">
-            <div class="hero-content">
-                <p class="section-label">À Propos</p>
-                <h1>Une relation historique, un avenir commun</h1>
-                <p class="lead">
-                    Découvrez l'histoire du partenariat Canada-Maurice et la mission du CMBC.
-                </p>
-            </div>
+            <span class="section-label">About Us</span>
+            <h1>We exist to build lasting bridges between Canada and Mauritius.</h1>
         </div>
     </section>
 
-    <section>
+    <!-- Who We Are -->
+    <section class="section">
         <div class="container">
-            <div class="content-split">
-                <div class="content-text">
-                    <p class="section-label">Histoire</p>
-                    <h2>Plus de 50 ans de coopération</h2>
-                    <p>
-                        Le Canada et Maurice entretiennent des relations diplomatiques solides depuis 
-                        l'indépendance de Maurice en 1968. Le Canada a été l'un des premiers pays 
-                        à reconnaître la jeune république et à établre une mission diplomatique à Port-Louis.
-                    </p>
-                    <p>
-                        Au fil des décennies, cette relation s'est enrichie par la présence d'une 
-                        communauté mauricienne importante au Canada (notamment à Montréal et Toronto) 
-                        et par des échanges commerciaux croissants dans les secteurs des services 
-                        financiers, des technologies et de l'éducation.
-                    </p>
-                    <p>
-                        Aujourd'hui, Maurice sert de hub régional pour les entreprises canadiennes 
-                        souhaitant accéder aux marchés africains, tandis que le Canada offre une 
-                        porte d'entrée vers le marché nord-américain pour les entreprises mauriciennes.
-                    </p>
+            <div class="split">
+                <div>
+                    <span class="section-label animate-on-scroll">Who We Are</span>
+                    <h2 class="section-heading animate-on-scroll">We exist to drive prosperity</h2>
+                    <p class="animate-on-scroll">The Canada Mauritius Trade and Investment Venture is a platform created to strengthen economic, institutional and people-to-people relations between Canada and Mauritius.</p>
+                    <p class="animate-on-scroll">It supports the development of long-term relationships and targeted initiatives that can improve bilateral trade, encourage investment, increase visibility for both markets and connect relevant stakeholders across sectors.</p>
+                    <p class="animate-on-scroll">The Venture is designed to operate at a practical level: facilitating introductions, highlighting opportunities, encouraging dialogue and helping structure a more coherent bilateral ecosystem.</p>
                 </div>
-                <div class="content-image">
-                    <img src="https://images.unsplash.com/photo-1559586616-361e18714958?w=600" alt="Drapeaux">
+                <div class="split-image animate-on-scroll">
+                    <img src="images/about-whoweare.jpg" alt="Canada Mauritius Venture board members during a strategic meeting">
                 </div>
             </div>
         </div>
     </section>
 
-    <section style="background: var(--bg-light);">
+    <!-- Membership Summary -->
+    <section class="section section--gray">
         <div class="container">
-            <div class="content-split reverse">
-                <div class="content-text">
-                    <p class="section-label">Mission</p>
-                    <h2>Notre raison d'être</h2>
-                    <p class="lead">
-                        Le Canada-Maurice Business Council est l'organisation business-led de référence 
-                        pour promouvoir le commerce et l'investissement entre le Canada et Maurice.
+            <div class="split split--reverse">
+                <div>
+                    <span class="section-label animate-on-scroll">Membership</span>
+                    <h2 class="section-heading animate-on-scroll">Membership</h2>
+                    <p class="animate-on-scroll">Membership is intended for senior leaders, entrepreneurs, investors, institutional actors and strategic partners who are actively engaged in Canada-Mauritius economic relations or who wish to contribute to their development.</p>
+                    <p class="animate-on-scroll">The Venture provides opportunities for membership, collaboration, sponsorship and strategic participation for organizations that see value in the Canada-Mauritius corridor.</p>
+                    <a href="membership.html" class="read-more animate-on-scroll">Read more</a>
+                </div>
+                <div class="split-image animate-on-scroll">
+                    <img src="images/about-membership.jpg" alt="Professionals networking at a Canada-Mauritius business event">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Role -->
+    <section class="section">
+        <div class="container">
+            <span class="section-label animate-on-scroll">Our Role</span>
+            <h2 class="section-heading animate-on-scroll">Our role is to create value for our members and partners, and more broadly for the bilateral relationship between Canada and Mauritius.</h2>
+            <p class="section-intro animate-on-scroll">Our vision is to contribute to greater economic prosperity, stronger institutional linkages and more consistent engagement between both markets.</p>
+            <p class="animate-on-scroll" style="max-width:700px; color:var(--gray-700);">The Venture works with public, private and community stakeholders who have a role in fostering sustainable relations between Canada and Mauritius, including diaspora leaders, business associations, investors, entrepreneurs, educational actors and cultural advocates.</p>
+
+            <div class="services-grid mt-60">
+                <div class="service-item animate-on-scroll">
+                    <h4>Insight</h4>
+                    <p>An expert body that advances business activity between Canada and Mauritius daily, providing strategic information and insight into trade and investment opportunities.</p>
+                </div>
+                <div class="service-item animate-on-scroll">
+                    <h4>Intelligence</h4>
+                    <p>Working with researchers and advisors to deliver economic analysis, forecasting, studies and up-to-date information relevant to bilateral trade and investment.</p>
+                </div>
+                <div class="service-item animate-on-scroll">
+                    <h4>Access</h4>
+                    <p>A premium network that continues to grow, ensuring high-level access in the public and private sectors for its members and partners.</p>
+                </div>
+                <div class="service-item animate-on-scroll">
+                    <h4>Services</h4>
+                    <p>A facilitator of trade and investment: advisory services, introductions, promotional support, assistance for trade missions and high-level visits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership -->
+    <section class="section section--gray" id="leadership">
+        <div class="container">
+            <span class="section-label animate-on-scroll">Leadership</span>
+            <h2 class="section-heading animate-on-scroll mb-60">The team driving the Canada-Mauritius Venture forward.</h2>
+
+            <div class="leadership-grid">
+                <div class="leader-card animate-on-scroll" id="padminee">
+                    <div class="leader-photo">
+                        <img src="images/team-padminee.webp" alt="Padminee Chundunsing — President and Founder of the Canada Mauritius Trade and Investment Venture">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Padminee Chundunsing</h3>
+                        <span class="leader-role">President / Founder</span>
+                        <p class="leader-bio">Padminee Chundunsing provides strategic direction for the Venture and serves as a bridge-builder across business, community and Francophone networks. She is presented by the organization as a catalyst for inclusive growth and Francophone engagement, with experience in governance, advocacy and community leadership. Her wider public profile emphasizes consensus-building, bilingual leadership, cultural connection and long-term institution-building.</p>
+                    </div>
+                </div>
+
+                <div class="leader-card animate-on-scroll" id="cedric">
+                    <div class="leader-photo">
+                        <img src="images/team-cedric.webp" alt="Cedric Medar — Director of Communications and Strategic Partnerships">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Cedric Medar</h3>
+                        <span class="leader-role">Director of Communications &amp; Strategic Partnerships</span>
+                        <p class="leader-bio">Cedric Medar is a bilingual communications and marketing strategist focused on international relations, digital visibility and stakeholder engagement. His role supports partnership development, organizational positioning and the communication of Canada-Mauritius opportunities across audiences.</p>
+                    </div>
+                </div>
+
+                <div class="leader-card animate-on-scroll" id="mohammad">
+                    <div class="leader-photo">
+                        <img src="images/team-mohammad.webp" alt="Mohammad Sheik Fareed — Director of Finance">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Mohammad Sheik Fareed</h3>
+                        <span class="leader-role">Director of Finance</span>
+                        <p class="leader-bio">Mohammad Sheik Fareed brings finance and government experience, with exposure to large portfolio oversight and international organizations. His contribution supports financial discipline, strategic planning and sustainable development thinking within the Venture's activities.</p>
+                    </div>
+                </div>
+
+                <div class="leader-card animate-on-scroll" id="daniel">
+                    <div class="leader-photo">
+                        <img src="images/team-daniel.webp" alt="Daniel Paquette — Strategic Advisor">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Daniel Paquette</h3>
+                        <span class="leader-role">Strategic Advisor</span>
+                        <p class="leader-bio">Daniel Paquette supports the strengthening of commercial relations between Mauritius and Canada. His advisory contribution focuses on market analysis, opportunity identification and practical strategies that can stimulate bilateral trade and investment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members / Partners Wall -->
+    <section class="section">
+        <div class="container">
+            <span class="section-label animate-on-scroll">Our Members / Partners</span>
+            <h2 class="section-heading animate-on-scroll mb-40">Supporters and collaborators</h2>
+            <div class="members-wall animate-on-scroll">
+                <div class="member-logo-placeholder">Partner 1</div>
+                <div class="member-logo-placeholder">Partner 2</div>
+                <div class="member-logo-placeholder">Partner 3</div>
+                <div class="member-logo-placeholder">Partner 4</div>
+                <div class="member-logo-placeholder">Partner 5</div>
+                <div class="member-logo-placeholder">Partner 6</div>
+                <div class="member-logo-placeholder">Partner 7</div>
+                <div class="member-logo-placeholder">Partner 8</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our History -->
+    <section class="section section--gray">
+        <div class="container">
+            <span class="section-label animate-on-scroll">Our History</span>
+            <h2 class="section-heading animate-on-scroll mb-60">Building a bridge, step by step.</h2>
+
+            <div class="timeline animate-on-scroll">
+                <div class="timeline-item">
+                    <p class="timeline-year">Foundation</p>
+                    <h4>Founding the Venture</h4>
+                    <p>The Venture was founded by leaders committed to deepening collaboration and unlocking opportunities between Canada and Mauritius.</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-year">Strategic Framing</p>
+                    <h4>Defining the bilateral corridor</h4>
+                    <p>Its public messaging has consistently defined the Canada-Mauritius connection as a living ecosystem of trade, innovation and opportunity, rather than a one-off networking initiative.</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="timeline-year">2026</p>
+                    <h4>Public Launch Momentum</h4>
+                    <p>In 2026, the organization used its website and LinkedIn presence to present its leadership, strategic priorities, exploratory mission activity and advocacy focus around stronger bilateral representation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="X / Twitter">X</a>
+                    </div>
+                    <p class="mt-20" style="font-size:0.82rem;">
+                        <a href="https://canadamauritius.com" style="color:rgba(255,255,255,0.6);">canadamauritius.com</a><br>
+                        <a href="https://padminee.ca" style="color:rgba(255,255,255,0.6);">padminee.ca</a>
                     </p>
-                    <p>
-                        Notre mission est triple :
-                    </p>
-                    <ul style="margin: 20px 0; padding-left: 20px; color: var(--text-gray);">
-                        <li style="margin-bottom: 10px;">Faciliter les rencontres et le networking entre décideurs économiques</li>
-                        <li style="margin-bottom: 10px;">Défendre les intérêts commerciaux communs auprès des gouvernements</li>
-                        <li style="margin-bottom: 10px;">Fournir des informations stratégiques et des opportunités d'affaires</li>
+                </div>
+                <div>
+                    <h4>Site</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="news.html">News &amp; Events</a></li>
+                        <li><a href="focus-areas.html">Focus Areas</a></li>
+                        <li><a href="resources.html">Resources</a></li>
                     </ul>
                 </div>
-                <div class="content-image">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" alt="Business">
+                <div>
+                    <h4>Contact</h4>
+                    <p><a href="mailto:info@canadamauritius.com" style="color:rgba(255,255,255,0.6);">info@canadamauritius.com</a></p>
+                    <p><a href="https://canadamauritius.com" style="color:rgba(255,255,255,0.6);">canadamauritius.com</a></p>
+                </div>
+                <div>
+                    <h4>Join Our Newsletter</h4>
+                    <form class="newsletter-form" onsubmit="return false;">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit">Sign Up</button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <p class="section-label">Secteurs Prioritaires</p>
-            <p class="separator">* * *</p>
-            <div class="section-header">
-                <h2>Des opportunités dans des secteurs complémentaires</h2>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Canada Mauritius Trade and Investment Venture. All rights reserved.</p>
             </div>
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Technologies & Innovation</h3>
-                    <p>Fintech, cleantech et intelligence artificielle : Maurice comme laboratoire régional pour les entreprises canadiennes.</p>
-                </div>
-                <div class="card">
-                    <h3>Services Financiers</h3>
-                    <p>Collaboration entre centres financiers offshore : expertise canadienne en gestion de patrimoine et services bancaires.</p>
-                </div>
-                <div class="card">
-                    <h3>Éducation</h3>
-                    <p>Partenariats universitaires, mobilité étudiante et formation professionnelle en français et en anglais.</p>
-                </div>
-                <div class="card">
-                    <h3>Tourisme Durable</h3>
-                    <p>Échange de bonnes pratiques entre le Canada et Maurice, deux destinations touristiques de premier plan.</p>
-                </div>
-                <div class="card">
-                    <h3>Agriculture & Agroalimentaire</h3>
-                    <p>Technologies agricoles canadiennes pour la sécurité alimentaire mauricienne.</p>
-                </div>
-                <div class="card">
-                    <h3>Énergies Renouvelables</h3>
-                    <p>Transition énergétique : solaire, éolien et expertise canadienne en hydroélectricité.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Canada-Maurice Business Council. Tous droits réservés.</p>
         </div>
     </footer>
+
     <script src="js/main.js"></script>
 </body>
 </html>
