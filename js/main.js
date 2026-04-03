@@ -8,7 +8,7 @@ const newsData = [
         excerpt: 'The Venture is leading an exploratory business mission from Canada to Mauritius to engage government representatives, private-sector stakeholders, investors and members of the Canadian diaspora in Mauritius.',
         image: 'images/exploratory_business_mission.jpg',
         imageAlt: 'Canadian delegation meeting stakeholders in Mauritius during the exploratory business mission',
-        link: 'news.html'
+        link: 'news-mission.html'
     },
     {
         date: 'January 2026',
@@ -16,7 +16,7 @@ const newsData = [
         excerpt: 'Padminee Chundunsing, President and Founder, provides strategic direction for the Venture and serves as a bridge-builder across business, community and Francophone networks.',
         image: 'images/team-padminee.webp',
         imageAlt: 'Padminee Chundunsing — President and Founder of the Canada Mauritius Trade and Investment Venture',
-        link: 'news.html'
+        link: 'news-padminee.html'
     },
     {
         date: 'December 2025',
@@ -24,7 +24,7 @@ const newsData = [
         excerpt: 'The Venture continues its work to build structured and visible pathways for trade, investment and knowledge exchange between Canada and Mauritius.',
         image: 'images/business_event.jpg',
         imageAlt: 'Business event showcasing Canada-Mauritius trade and investment activities',
-        link: 'news.html'
+        link: 'news-corridor.html'
     },
     {
         date: 'November 2025',
@@ -32,7 +32,7 @@ const newsData = [
         excerpt: 'Mauritius offers Canadian businesses a strategic entry point into Africa and the Indian Ocean region — with a stable investment climate, strong legal frameworks and global connectivity.',
         image: 'images/business_leader_meeting.jpg',
         imageAlt: 'Business leaders discussing Mauritius as a gateway to Africa',
-        link: 'news.html'
+        link: 'news-gateway.html'
     }
 ];
 
