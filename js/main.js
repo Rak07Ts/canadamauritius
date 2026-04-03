@@ -1,5 +1,70 @@
 /* ===== main.js — Canada Mauritius Trade and Investment Venture ===== */
 
+/* ---------- Shared News Data (single source of truth) ---------- */
+const newsData = [
+    {
+        date: 'January 12–15, 2026',
+        title: 'Exploratory Business Mission to Mauritius',
+        excerpt: 'The Venture is leading an exploratory business mission from Canada to Mauritius to engage government representatives, private-sector stakeholders, investors and members of the Canadian diaspora in Mauritius.',
+        image: 'images/exploratory_business_mission.jpg',
+        imageAlt: 'Canadian delegation meeting stakeholders in Mauritius during the exploratory business mission',
+        link: 'news.html'
+    },
+    {
+        date: 'January 2026',
+        title: 'Leadership Spotlight: Padminee Chundunsing',
+        excerpt: 'Padminee Chundunsing, President and Founder, provides strategic direction for the Venture and serves as a bridge-builder across business, community and Francophone networks.',
+        image: 'images/team-padminee.webp',
+        imageAlt: 'Padminee Chundunsing — President and Founder of the Canada Mauritius Trade and Investment Venture',
+        link: 'news.html'
+    },
+    {
+        date: 'December 2025',
+        title: 'Strengthening the Canada-Mauritius Business Corridor',
+        excerpt: 'The Venture continues its work to build structured and visible pathways for trade, investment and knowledge exchange between Canada and Mauritius.',
+        image: 'images/business_event.jpg',
+        imageAlt: 'Business event showcasing Canada-Mauritius trade and investment activities',
+        link: 'news.html'
+    },
+    {
+        date: 'November 2025',
+        title: 'Mauritius as a Gateway to Africa',
+        excerpt: 'Mauritius offers Canadian businesses a strategic entry point into Africa and the Indian Ocean region — with a stable investment climate, strong legal frameworks and global connectivity.',
+        image: 'images/business_leader_meeting.jpg',
+        imageAlt: 'Business leaders discussing Mauritius as a gateway to Africa',
+        link: 'news.html'
+    }
+];
+
+/* ---------- Render News Cards ---------- */
+function renderNewsCards(containerId, limit) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const items = limit ? newsData.slice(0, limit) : newsData;
+    container.innerHTML = items.map(item => `
+        <a href="${item.link}" class="news-card animate-on-scroll" style="text-decoration:none;color:inherit;">
+            <div class="news-card-image">
+                <img src="${item.image}" alt="${item.imageAlt}">
+            </div>
+            <div class="news-card-body">
+                <p class="news-card-date">${item.date}</p>
+                <h3>${item.title}</h3>
+                <p>${item.excerpt}</p>
+                <span class="read-more">Read more</span>
+            </div>
+        </a>
+    `).join('');
+    /* Re-observe newly rendered cards for scroll animations */
+    if (window._scrollObserver) {
+        container.querySelectorAll('.animate-on-scroll').forEach(el => window._scrollObserver.observe(el));
+    }
+}
+
+window.addEventListener('load', () => {
+    renderNewsCards('home-news-grid', 3);
+    renderNewsCards('news-page-grid');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     /* ---------- Loading screen ---------- */
     const loader = document.getElementById('loading');
@@ -90,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
         animatedEls.forEach(el => observer.observe(el));
+        window._scrollObserver = observer; /* expose for renderNewsCards */
     } else {
         animatedEls.forEach(el => el.classList.add('visible'));
     }

@@ -406,6 +406,32 @@ p { margin-bottom: 1rem; }
 @keyframes scaleIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
 @keyframes slideRedLine { from { width: 0; } to { width: 40px; } }
 
+/* --- Image-based page hero (news.html, about.html) --- */
+.page-hero-bg {
+    margin-top: 80px; position: relative; overflow: hidden;
+    min-height: 360px; display: flex; align-items: center;
+    background-size: cover; background-position: center;
+}
+.page-hero-overlay {
+    position: absolute; inset: 0; background: rgba(10, 20, 40, 0.62);
+}
+.page-hero-title {
+    font-family: var(--font-heading); font-size: 2.5rem; font-weight: 400;
+    color: var(--white); max-width: 640px; line-height: 1.25; margin-bottom: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+}
+.page-hero-sub {
+    color: rgba(255,255,255,0.8); max-width: 600px; margin-top: 12px; font-size: 1rem;
+    animation: fadeInUp 0.8s ease 0.35s both;
+}
+
+/* --- Button alias --- */
+.btn--primary { display: inline-block; padding: 14px 32px; font-family: var(--font-body);
+    font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+    border: 2px solid var(--red); background: var(--red); color: var(--white);
+    cursor: pointer; transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); text-decoration: none; }
+.btn--primary:hover { background: var(--red-dark); border-color: var(--red-dark); color: var(--white); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(200,16,46,0.3); }
+
 /* --- Scroll Animations --- */
 .animate-on-scroll {
     opacity: 0; transform: translateY(30px);
@@ -497,6 +523,8 @@ p { margin-bottom: 1rem; }
     .btn { display: block; width: 100%; text-align: center; margin-bottom: 10px; }
     .page-hero { padding: 70px 0 50px; }
     .page-hero h1 { font-size: 1.75rem; }
+    .page-hero-bg { min-height: 260px; }
+    .page-hero-title { font-size: 1.75rem; }
 }
 
 @media (max-width: 480px) {
