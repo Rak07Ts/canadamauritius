@@ -57,6 +57,8 @@ function renderNewsCards(containerId, limit) {
     /* Re-observe newly rendered cards for scroll animations */
     if (window._scrollObserver) {
         container.querySelectorAll('.animate-on-scroll').forEach(el => window._scrollObserver.observe(el));
+    } else {
+        container.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.add('visible'));
     }
 }
 
@@ -145,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ---------- Animate on scroll (IntersectionObserver) ---------- */
     const animatedEls = document.querySelectorAll('.animate-on-scroll');
-    if (animatedEls.length && 'IntersectionObserver' in window) {
+    if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -155,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
         animatedEls.forEach(el => observer.observe(el));
-        window._scrollObserver = observer; /* expose for renderNewsCards */
+        window._scrollObserver = observer; /* always set so renderNewsCards can use it */
     } else {
         animatedEls.forEach(el => el.classList.add('visible'));
     }
