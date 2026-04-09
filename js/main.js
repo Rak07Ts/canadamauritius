@@ -5,7 +5,7 @@ const newsData = [
     {
         date: 'January 12–15, 2026',
         title: 'Exploratory Business Mission to Mauritius',
-        excerpt: 'The Venture is leading an exploratory business mission from Canada to Mauritius to engage government representatives, private-sector stakeholders, investors and members of the Canadian diaspora in Mauritius.',
+        excerpt: 'The Venture led its first exploratory business mission from Canada to Mauritius, engaging government representatives, private-sector stakeholders, investors and members of the Canadian diaspora in Mauritius.',
         image: 'images/exploratory_business_mission.jpg',
         imageAlt: 'Canadian delegation meeting stakeholders in Mauritius during the exploratory business mission',
         link: 'news-mission.html'
@@ -13,7 +13,7 @@ const newsData = [
     {
         date: 'January 2026',
         title: 'Leadership Spotlight: Padminee Chundunsing',
-        excerpt: 'Padminee Chundunsing, President and Founder, provides strategic direction for the Venture and serves as a bridge-builder across business, community and Francophone networks.',
+        excerpt: 'Padminee Chundunsing, President and Founder, guided the Venture\'s strategic direction and served as a bridge-builder across business, community and Francophone networks.',
         image: 'images/team-padminee.webp',
         imageAlt: 'Padminee Chundunsing — President and Founder of the Canada Mauritius Trade and Investment Venture',
         link: 'news-padminee.html'
@@ -21,7 +21,7 @@ const newsData = [
     {
         date: 'December 2025',
         title: 'Strengthening the Canada-Mauritius Business Corridor',
-        excerpt: 'The Venture continues its work to build structured and visible pathways for trade, investment and knowledge exchange between Canada and Mauritius.',
+        excerpt: 'The Venture set out to build structured and visible pathways for trade, investment and knowledge exchange between Canada and Mauritius.',
         image: 'images/business_event.jpg',
         imageAlt: 'Business event showcasing Canada-Mauritius trade and investment activities',
         link: 'news-corridor.html'
@@ -29,7 +29,7 @@ const newsData = [
     {
         date: 'November 2025',
         title: 'Mauritius as a Gateway to Africa',
-        excerpt: 'Mauritius offers Canadian businesses a strategic entry point into Africa and the Indian Ocean region — with a stable investment climate, strong legal frameworks and global connectivity.',
+        excerpt: 'Mauritius offered Canadian businesses a strategic entry point into Africa and the Indian Ocean region — with a stable investment climate, strong legal frameworks and global connectivity.',
         image: 'images/business_leader_meeting.jpg',
         imageAlt: 'Business leaders discussing Mauritius as a gateway to Africa',
         link: 'news-gateway.html'
