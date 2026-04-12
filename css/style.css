@@ -434,9 +434,12 @@ p { margin-bottom: 1rem; }
 .hero--news-list     { background-position: center 30%; }
 .hero--young-leaders { background-position: center 40%; }
 .hero--sponsorship   { background-position: center 50%; }
-/* Desktop : parallax fixe — évite le recadrage imprévisible du cover sur grand écran */
+/* Desktop : article heroes — adjusted position to compensate for wider container scaling */
 @media (min-width: 769px) {
-    .page-hero-bg { background-attachment: fixed; }
+    .hero--padminee  { background-position: center 35%; }
+    .hero--mission   { background-position: center 55%; }
+    .hero--corridor  { background-position: center 40%; }
+    .hero--diaspora  { background-position: center 30%; }
 }
 
 .page-hero-overlay {
