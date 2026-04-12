@@ -423,6 +423,28 @@ p { margin-bottom: 1rem; }
     min-height: 360px; display: flex; align-items: center;
     background-size: cover; background-position: center;
 }
+
+/* ── Hero position classes — mobile-first, @media desktop override ── */
+.hero--padminee      { background-position: center 20%; }
+.hero--mission       { background-position: center 40%; min-height: 520px; }
+.hero--corridor      { background-position: center 25%; min-height: 520px; }
+.hero--diaspora      { background-position: center 15%; }
+.hero--membership    { background-position: center 60%; }
+.hero--focus         { background-position: center 70%; }
+.hero--news-list     { background-position: center 30%; }
+.hero--young-leaders { background-position: center 40%; }
+.hero--sponsorship   { background-position: center 50%; }
+/* Desktop: viewport plus large → recadrage différent */
+@media (min-width: 769px) {
+    .hero--padminee      { background-position: center top; }
+    .hero--mission       { background-position: center 15%; }
+    .hero--corridor      { background-position: center top; }
+    .hero--diaspora      { background-position: center top; }
+    .hero--membership    { background-position: center 35%; }
+    .hero--focus         { background-position: center 50%; }
+    .hero--news-list     { background-position: center 15%; }
+}
+
 .page-hero-overlay {
     position: absolute; inset: 0; background: rgba(10, 20, 40, 0.62);
 }
