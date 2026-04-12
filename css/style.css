@@ -439,7 +439,7 @@ p { margin-bottom: 1rem; }
 @media (min-width: 769px) {
     .hero--padminee  { background-position: center 35%; }
     .hero--mission   { background-position: center 25%; }
-    .hero--corridor  { background-position: center 40%; }
+    .hero--corridor  { background-position: center 30%; }
     .hero--diaspora  { background-position: center 30%; }
 }
 
