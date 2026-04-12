@@ -131,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-        });
     }
 
     /* ---------- Stagger siblings in grids ---------- */
