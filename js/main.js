@@ -3,6 +3,38 @@
 /* ---------- Shared News Data (single source of truth) ---------- */
 const newsData = [
     {
+        date: 'March 14, 2026',
+        title: 'Celebrating Mauritian Independence with the Diaspora Community',
+        excerpt: 'Members of the Canada Mauritius Trade and Investment Venture joined the Mauritian diaspora in Canada to celebrate Mauritian Independence — a proud and joyful occasion reflecting the deep ties between our two countries.',
+        image: 'images/Independence-174.jpg',
+        imageAlt: 'Community members holding the Mauritian flag at the Independence Day celebration in Canada',
+        link: 'news-independence.html'
+    },
+    {
+        date: 'January 15, 2026',
+        title: 'Final Day of Mission: Meeting with the Minister of Foreign Affairs',
+        excerpt: 'The final day of the exploratory mission concluded on an inspiring note with a meeting with The Hon. Dhananjay Ramful, Minister of Foreign Affairs, and Mr. Brian AhChuen, Honorary Consul of Canada in Mauritius.',
+        image: 'images/business_leader_meeting.jpg',
+        imageAlt: 'High-level bilateral meeting during the final day of the Canada-Mauritius exploratory business mission',
+        link: 'news-jan15.html'
+    },
+    {
+        date: 'January 14, 2026',
+        title: 'Strategic Dialogue with the Economic Development Board of Mauritius',
+        excerpt: 'A productive high-level meeting with Mr. Mahen Abhimanu Kundasamy, CEO of the Economic Development Board of Mauritius, focused on strengthening Canada–Mauritius trade, investment and sustainable partnerships.',
+        image: 'images/business_event.jpg',
+        imageAlt: 'Strategic meeting between the Canada Mauritius Trade and Investment Venture and the Economic Development Board of Mauritius',
+        link: 'news-edb.html'
+    },
+    {
+        date: 'January 13, 2026',
+        title: 'Key Meetings in Port-Louis: MCCI and Corporate Leadership Center',
+        excerpt: 'Padminee Chundunsing and Daniel Paquette met with Dr. Drishtysingh Ramdenee, Secretary General of the MCCI, and Amaresh Ramlugan, Founder-Director of the Corporate Leadership Center Ltd., in Mauritius.',
+        image: 'images/exploratory_business_mission.jpg',
+        imageAlt: 'Meeting with the Mauritius Chamber of Commerce and Industry Secretary General in Port-Louis',
+        link: 'news-jan13.html'
+    },
+    {
         date: 'January 12–15, 2026',
         title: 'Exploratory Business Mission to Mauritius',
         excerpt: 'The Venture led its first exploratory business mission from Canada to Mauritius, engaging government representatives, private-sector stakeholders, investors and members of the Canadian diaspora in Mauritius.',
@@ -17,6 +49,14 @@ const newsData = [
         image: 'images/team-padminee.webp',
         imageAlt: 'Padminee Chundunsing — President and Founder of the Canada Mauritius Trade and Investment Venture',
         link: 'news-padminee.html'
+    },
+    {
+        date: 'December 31, 2025',
+        title: 'New Year\'s Eve with the Mauritian Diaspora in British Columbia',
+        excerpt: 'Members of the Venture joined the Mauritian diaspora community in British Columbia for a warm New Year\'s Eve get-together — a reminder that people-to-people ties are at the heart of everything we do.',
+        image: 'images/NYE-134.jpg',
+        imageAlt: 'Mauritian diaspora members holding the Mauritian flag at the New Year\'s Eve gathering in British Columbia',
+        link: 'news-nye.html'
     },
     {
         date: 'December 2025',
