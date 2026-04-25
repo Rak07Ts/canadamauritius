@@ -261,6 +261,11 @@ p { margin-bottom: 1rem; }
 .news-card-image { height: 200px; overflow: hidden; background: var(--gray-100); }
 .news-card-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; transition: transform 0.6s ease; }
 .news-card:hover .news-card-image img { transform: scale(1.05); }
+
+/* Adjust card image positions for specific articles */
+a[href="news-gateway.html"] .news-card-image img { object-position: center 20%; }
+a[href="news-corridor.html"] .news-card-image img { object-position: center 25%; }
+
 .news-card-body { padding: 24px; }
 .news-card-date { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500); margin-bottom: 8px; }
 .news-card-body h3 { font-size: 1.15rem; margin-bottom: 12px; transition: color 0.3s; }
