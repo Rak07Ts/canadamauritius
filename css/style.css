@@ -263,7 +263,7 @@ p { margin-bottom: 1rem; }
 .news-card:hover .news-card-image img { transform: scale(1.05); }
 
 /* Adjust card image positions for specific articles */
-a[href="news-gateway.html"] .news-card-image img { object-position: center 10%; }
+a[href="news-gateway.html"] .news-card-image img { object-position: center 5%; }
 a[href="news-corridor.html"] .news-card-image img { object-position: center 20%; }
 
 .news-card-body { padding: 24px; }
