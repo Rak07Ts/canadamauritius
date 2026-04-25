@@ -46,7 +46,7 @@ const newsData = [
         date: 'January 2026',
         title: 'Leadership Spotlight: Padminee Chundunsing',
         excerpt: 'Padminee Chundunsing, President and Founder, guided the Venture\'s strategic direction and served as a bridge-builder across business, community and Francophone networks.',
-        image: 'images/team-padminee.webp',
+        image: 'images/image_9.webp',
         imageAlt: 'Padminee Chundunsing — President and Founder of the Canada Mauritius Trade and Investment Venture',
         link: 'news-padminee.html'
     },
@@ -62,7 +62,7 @@ const newsData = [
         date: 'December 2025',
         title: 'Strengthening the Canada-Mauritius Business Corridor',
         excerpt: 'The Venture set out to build structured and visible pathways for trade, investment and knowledge exchange between Canada and Mauritius.',
-        image: 'images/business_event.jpg',
+        image: 'images/image_3.webp',
         imageAlt: 'Business event showcasing Canada-Mauritius trade and investment activities',
         link: 'news-corridor.html'
     },
@@ -70,7 +70,7 @@ const newsData = [
         date: 'November 2025',
         title: 'Mauritius as a Gateway to Africa',
         excerpt: 'Mauritius offered Canadian businesses a strategic entry point into Africa and the Indian Ocean region — with a stable investment climate, strong legal frameworks and global connectivity.',
-        image: 'images/business_leader_meeting.jpg',
+        image: 'images/image_2.webp',
         imageAlt: 'Business leaders discussing Mauritius as a gateway to Africa',
         link: 'news-gateway.html'
     }
