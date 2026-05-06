@@ -38,7 +38,7 @@ const newsData = [
         date: 'January 12–15, 2026',
         title: 'Exploratory Business Mission to Mauritius',
         excerpt: 'The Venture led its first exploratory business mission from Canada to Mauritius, engaging government representatives, private-sector stakeholders, investors and members of the Canadian diaspora in Mauritius.',
-        image: 'images/image_7.webp',
+        image: 'images/Image_remplacement.jpg',
         imageAlt: 'Canadian delegation meeting stakeholders in Mauritius during the exploratory business mission',
         link: 'news-mission.html'
     },
