@@ -54,7 +54,7 @@ const newsData = [
         date: 'December 31, 2025',
         title: 'New Year\'s Eve with the Mauritian Diaspora in British Columbia',
         excerpt: 'Members of the Venture joined the Mauritian diaspora community in British Columbia for a warm New Year\'s Eve get-together — a reminder that people-to-people ties are at the heart of everything we do.',
-        image: 'images/NYE-134.jpg',
+        image: 'images/NYE-125.jpg',
         imageAlt: 'Mauritian diaspora members holding the Mauritian flag at the New Year\'s Eve gathering in British Columbia',
         link: 'news-nye.html'
     },
